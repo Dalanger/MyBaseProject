@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".splash.SplashActivity">
+
+
+
+    <ImageView
+        android:layout_marginTop="@dimen/dimen_120"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/dl_logo"
+        android:layout_width="@dimen/dimen_100"
+        android:layout_height="@dimen/dimen_100" />
+
+    <TextView
+        android:textSize="@dimen/dimen_14"
+        android:layout_marginBottom="@dimen/dimen_40"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/grayCC"
+        android:text="@string/company_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

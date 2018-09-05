@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dimen_240"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rec_white_r15"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_15"
+        android:text="提示"
+        android:textColor="@color/dialogTitleTextColor"
+        android:textSize="@dimen/dimen_16"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_20"
+        android:text="发现新版本,请立即更新!"
+        android:textColor="@color/dialogContentTextColor"
+        android:textSize="@dimen/dimen_15" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1"
+        android:background="@color/dialogDividerColor" />
+
+    <TextView
+        android:id="@+id/tv_sure"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:gravity="center"
+        android:text="去更新"
+        android:textColor="@color/dialogSureTextColor"
+        android:textSize="@dimen/dimen_16" />
+
+
+</LinearLayout>

@@ -1,0 +1,205 @@
+ext.deps = [:]
+
+def build_version = [:]
+
+deps.build_version = build_version
+
+//Gradle
+def gradle = [:]
+deps.gradle = gradle
+gradle.plugin = "com.android.tools.build:gradle:3.1.3"
+
+//Android sdk and tools
+build_version.compileSdkVersion = 28
+build_version.buildVersion = "28.0.2"
+build_version.minSdkVersion = 16
+build_version.targetSdkVersion = 28
+build_version.versionCode = 1
+build_version.versionName = "1.0.0"
+build_version.javaVersion = JavaVersion.VERSION_1_8
+
+//Android support
+def support = [:]
+deps.support = support
+support.appcompat = 'com.android.support:appcompat-v7:28.+'
+support.annotations = 'com.android.support:support-annotations:28.+'
+support.core_ui = 'com.android.support:support-core-ui:28.+'
+support.cardview = 'com.android.support:cardview-v7:28.+'
+support.constraint_layout = 'com.android.support.constraint:constraint-layout:1.0.2'
+support.design = 'com.android.support:design:28.+'
+support.v4 = 'com.android.support:support-v4:28.+'
+support.multidex = 'com.android.support:multidex:1.0.3'
+
+//Kotlin
+def kotlin = [:]
+deps.kotlin = kotlin
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.51"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:1.2.51"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.51"
+
+//图片加载框架Glide
+def glide = [:]
+deps.glide = glide
+glide.glide = 'com.github.bumptech.glide:glide:3.8.0'
+//glide.compiler = 'com.github.bumptech.glide:compiler:4.4.0'
+
+//网络请求框架Retrofit
+def retrofit2 = [:]
+deps.retrofit2 = retrofit2
+retrofit2.retrofit = 'com.squareup.retrofit2:retrofit:2.4.0'
+retrofit2.converter_gson = 'com.squareup.retrofit2:converter-gson:2.4.0'
+retrofit2.adapter_rxjava = 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+retrofit2.okhttp_log = 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+
+//RxJava2
+def rxjava2 = [:]
+deps.rxjava2 = rxjava2
+rxjava2.rxjava = "io.reactivex.rxjava2:rxjava:2.1.16"
+rxjava2.rxandroid = "io.reactivex.rxjava2:rxandroid:2.0.2"
+
+//权限请求
+def permission = [:]
+deps.permission = permission
+permission.plugin = 'com.mylhyl:acp:1.1.7'
+
+//腾讯bugly
+def bugly = [:]
+deps.bugly = bugly
+bugly.plugin = 'com.tencent.bugly:symtabfileuploader:latest.release'
+bugly.crashreport = 'com.tencent.bugly:crashreport_upgrade:latest.release'
+bugly.nativecrashreport = 'com.tencent.bugly:nativecrashreport:latest.release'
+
+//EventBus
+def eventbus = [:]
+deps.eventbus = eventbus
+eventbus.api = 'org.greenrobot:eventbus:3.1.1'
+
+//circleImage
+def circle_img = [:]
+deps.circle_img = circle_img
+circle_img.api = 'com.makeramen:roundedimageview:2.3.0'
+
+//Gson
+def gson = [:]
+deps.gson = gson
+gson.version = 'com.google.code.gson:gson:2.8.0'
+
+//图片压缩
+def luban = [:]
+deps.luban = luban
+luban.api = 'top.zibin:Luban:1.1.5'
+
+//图片 选择器/预览/长图
+def photo = [:]
+deps.photo = photo
+photo.select = 'com.jph.takephoto:takephoto_library:4.0.3'
+photo.preview = 'com.github.chrisbanes:PhotoView:1.3.0'
+photo.long = 'me.kareluo.intensify:image:1.1.0'
+
+
+//下拉刷新
+def pullRefresh = [:]
+deps.pullRefresh = pullRefresh
+pullRefresh.api   = 'in.srain.cube:ptr-load-more:1.0.2'
+
+
+//微信支付
+def pay = [:]
+deps.pay = pay
+pay.wechat = 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+
+
+//banner
+def banner = [:]
+deps.banner = banner
+banner.api = 'com.bigkoo:convenientbanner:2.0.5'
+
+//状态栏
+def statusBar = [:]
+deps.statusBar = statusBar
+statusBar.api = 'com.jaeger.statusbarutil:library:1.5.1'
+
+//时间选择器
+def timePicker = [:]
+deps.timePicker = timePicker
+timePicker.api = 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
+
+//城市三级联动
+def cityPicker = [:]
+deps.cityPicker = cityPicker
+cityPicker.api = 'com.contrarywind:Android-PickerView:4.1.6'
+
+//侧滑layout
+def swipe = [:]
+deps.swipe = swipe
+swipe.api = 'cn.bingoogolapple:bga-swipebacklayout:1.1.9@aar'
+
+//万能recyclerview adapter
+def adapter = [:]
+deps.adapter = adapter
+adapter.api = 'cn.bingoogolapple:bga-adapter:1.2.9@aar'
+
+//黄油刀
+def butter = [:]
+deps.butter = butter
+butter.api='com.jakewharton:butterknife:8.8.1'
+butter.annotationProcessor='com.jakewharton:butterknife-compiler:8.8.1'
+
+//tab layout
+def xTab = [:]
+deps.xTab = xTab
+xTab.api='com.androidkun:XTabLayout:1.0.9'
+
+//评分
+def score = [:]
+deps.score=score
+score.api='com.github.ornolfr:rating-view:0.1.2@aar'
+
+//二维码生成
+def zxing=[:]
+deps.zxing=zxing
+zxing.api='me.dm7.barcodescanner:zxing:1.8.4'
+
+//银行卡格式化 4位分割
+def bankcard=[:]
+deps.bankcard=bankcard
+bankcard.api='com.yuyh.bankcardformat:library:1.0.2'
+
+//流式布局 标签布局
+def flow=[:]
+deps.flow=flow
+flow.api='com.hyman:flowlayout-lib:1.1.2'
+
+//个推
+def getui=[:]
+deps.getui=getui
+getui.api='com.getui:sdk:2.12.3.0'
+
+//线程池
+def thread=[:]
+deps.thread=thread
+thread.api='com.github.yjfnypeu:EasyThread:0.2.0'
+
+//网络请求框架ion
+def ion=[:]
+deps.ion=ion
+ion.api='com.koushikdutta.ion:ion:2.+'
+
+//可展开的linearlayout textview
+def expand=[:]
+deps.expandLayout=expand
+expand.layout='com.github.chaychan:ExpandableLinearLayout:1.0.0'
+expand.textview='com.ms-square:expandableTextView:0.1.4'
+
+//多样化textview
+def cssText=[:]
+deps.cssText=cssText
+cssText.api='com.sflin:csstextview:1.0.0'
+
+//表情库
+def emoji=[:]
+deps.emoji=emoji
+emoji.api='com.lqr.emoji:library:1.0.2'
+
+
+

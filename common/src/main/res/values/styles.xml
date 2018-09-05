@@ -1,0 +1,89 @@
+<resources>
+
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/black</item>
+    </style>
+
+
+    <style name="AppThemeActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/black</item>
+    </style>
+
+
+
+    <!-- 适用于开启滑动返回功能的 Activity -->
+    <style name="AppTheme.Transparent">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
+
+    <!--地址选择tabLayout字体大小-->
+    <style name="AddressTabTextAppearance">
+        <item name="android:textSize">@dimen/dimen_16</item>
+    </style>
+    <!--地址选择recycleView字体样式-->
+    <style name="AddressItemTextStyle">
+        <item name="android:textSize">@dimen/dimen_16</item>
+        <item name="android:textColor">@color/black26</item>
+        <item name="android:paddingTop">@dimen/dimen_13</item>
+        <item name="android:paddingBottom">@dimen/dimen_13</item>
+        <item name="android:paddingLeft">@dimen/dimen_15</item>
+    </style>
+
+    <!--dialog加载progress样式-->
+    <style name="CustomProgressBar" parent="Base.Widget.AppCompat.ProgressBar">
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:indeterminateDrawable">@drawable/ring_dialog</item>
+    </style>
+
+
+    <!--popWindow 展开动画-->
+    <style name="showPopupAnimation" parent="android:Animation">  <!--从左边-->
+        <item name="android:windowExitAnimation">@anim/push_left_out</item>
+        <item name="android:windowEnterAnimation">@anim/push_left_in</item>
+    </style>
+
+    <style name="showPopupAnimationRight" parent="android:Animation">  <!--从右边-->
+        <item name="android:windowExitAnimation">@anim/push_right_out</item>
+        <item name="android:windowEnterAnimation">@anim/push_right_in</item>
+    </style>
+
+    <style name="showPopupAnimationTop" parent="android:Animation">  <!--从上到下-->
+        <item name="android:windowExitAnimation">@anim/pop_exit_anim</item>
+        <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
+    </style>
+
+    <!--loadinglayout样式-->
+    <style name="LoadingLayoutStyle">
+        <item name="llEmptyImage">@mipmap/icon_empty</item>
+        <item name="llEmptyText">暂无数据</item>
+        <item name="llErrorImage">@mipmap/icon_netless</item>
+        <item name="llErrorText">网络似乎开了小差</item>
+        <item name="llRetryText">点我重试</item>
+
+        <item name="llLoadingImage">@drawable/refresh_anim</item>
+        <item name="llLoadingText">加载中</item>
+
+
+        <item name="llEmptyResId">@layout/layout_state_empty</item>
+        <item name="llLoadingResId">@layout/layout_state_loading</item>
+        <item name="llErrorResId">@layout/layout_state_netless</item>
+
+        <item name="llButtonTextColor">#999999</item>
+        <item name="llButtonTextSize">16sp</item>
+        <item name="llButtonBackground">@drawable/stroke_gray_white_r5</item>
+        <item name="llTextColor">#333333</item>
+        <item name="llTextSize">16sp</item>
+    </style>
+</resources>

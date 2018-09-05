@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LoadingLayout">
+        <!-- 空布局资源id -->
+        <attr name="llEmptyResId" format="reference" />
+        <!-- 加载中布局资源id -->
+        <attr name="llLoadingResId" format="reference" />
+        <!-- 错误布局资源id -->
+        <attr name="llErrorResId" format="reference" />
+
+        <!--加载布局图片/动画-->
+        <attr name="llLoadingImage" format="reference"/>
+        <attr name="llLoadingText" format="string"/>
+
+        <!-- 空布局图片 -->
+        <attr name="llEmptyImage" format="reference" />
+        <!-- 空布局文本 -->
+        <attr name="llEmptyText" format="string" />
+
+        <!-- 错误布局图片 -->
+        <attr name="llErrorImage" format="reference" />
+        <!-- 错误布局文本 -->
+        <attr name="llErrorText" format="string" />
+        <!-- 错误布局重试按钮文本 -->
+        <attr name="llRetryText" format="string" />
+
+        <!-- 文本颜色 -->
+        <attr name="llTextColor" format="color" />
+        <!-- 文本尺寸 -->
+        <attr name="llTextSize" format="dimension" />
+
+        <!-- 按钮文本颜色 -->
+        <attr name="llButtonTextColor" format="color" />
+        <!-- 按钮文本尺寸 -->
+        <attr name="llButtonTextSize" format="dimension" />
+        <!-- 按钮背景 -->
+        <attr name="llButtonBackground" format="reference" />
+
+
+    </declare-styleable>
+    <attr name="styleLoadingLayout" format="reference" />
+
+
+</resources>

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">addressPickerLib</string>
+    <string name="sure">确定</string>
+
+    <string name="register_text">点击注册即代表您已同意</string>
+    <string name="register_agreement">《用户注册协议》</string>
+    <string name="company_name">浙江珺墨网络科技有限公司</string>
+    <string name="empty_code">验证码不能为空</string>
+    <string name="empty_mobile">手机号不能为空</string>
+    <string name="error_mobile">请输入正确的手机号</string>
+    <string name="empty_password">密码不能为空</string>
+    <string name="empty_content">内容不能为空</string>
+    <string name="not_equal">两次密码不一致</string>
+    <string name="on_fail">请求失败</string>
+    <string name="no_more_data">暂无更多数据</string>
+    <string name="send_code_success">验证码已发送</string>
+    <string name="send_success">发送成功</string>
+    <string name="delete_success">删除成功</string>
+    <string name="change_success">修改成功</string>
+    <string name="register_success">注册成功</string>
+    <string name="login_success">登录成功</string>
+    <string name="logout_success">退出成功</string>
+    <string name="set_success">设置成功</string>
+    <string name="submit_success">提交成功</string>
+    <string name="not_login">请先登录</string>
+</resources>

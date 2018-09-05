@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2EA3E6</color>
+    <color name="colorPrimaryDark">#2EA3E6</color>
+    <color name="colorAccent">#2EA3E6</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="black_dark">#333333</color>
+    <color name="black_middle">#666666</color>
+    <color name="black_low">#848484</color>
+    <color name="colorBar">#a2a2a2</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="gray99">#999999</color>
+    <color name="grayB6">#b6b6b6</color>
+    <color name="grayB7">#b7b7b7</color>
+    <color name="grayCC">#CCCCCC</color>
+    <color name="grayDD">#DDDDDD</color>
+    <color name="graye4">#e4e4e4</color>
+    <color name="grayEE">#eeeeee</color>
+    <color name="grayCA">#CACACA</color>
+    <color name="black32">#323232</color>
+    <color name="black33">#333333</color>
+    <color name="color_8290AF">#8290AF</color>
+    <color name="black39">#393939</color>
+    <color name="black4A">#4a4a4a</color>
+    <color name="blackC6">#C6C6C6</color>
+    <color name="blackB6">#b6b6b6</color>
+    <color name="grayF5">#f5f5f5</color>
+    <color name="grayFB">#fbfbfb</color>
+    <color name="grayFE">#fefefe</color>
+    <color name="black78">#787878</color>
+    <color name="grayD5">#d5d5d5</color>
+    <color name="grayD2">#d2d2d2</color>
+    <color name="grayEB">#ebebeb</color>
+    <color name="grayE3">#e3e3e3</color>
+    <color name="grayE5">#e5e5e5</color>
+    <color name="black23">#232323</color>
+    <color name="black26">#262626</color>
+    <color name="blackbc">#bcbcbc</color>
+    <color name="black66">#666666</color>
+    <color name="black96">#969696</color>
+    <color name="black71">#717171</color>
+    <color name="shadow20">#20000000</color>
+    <color name="shadow25">#25808080</color>
+    <color name="shadow40">#40808080</color>
+    <color name="shadow80">#80808080</color>
+    <color name="shadow10">#10000000</color>
+    <color name="shadow22">#22000000</color>
+    <color name="red_light">#ff90ae</color>
+
+    <color name="pure_red">#ff0000</color>
+    <color name="grayF8">#F8F8F8</color>
+    <color name="green_light">#8EE3CE</color>
+    <color name="light_grey">#d9d9d9</color>
+    <color name="green_send">#1dab1b</color>
+    <color name="green_send_stroke">#368836</color>
+    <color name="red_accent">#F68CB9</color>
+    <color name="basic_color_primary">#373b3e</color>
+    <color name="faint_red">#F96B68</color>
+    <color name="colorDialogWindow">#ffaaaaaa</color>
+
+      
+
+
+    <!--使用takephoto自定义的颜色-->
+    <color name="multiple_image_select_primaryDark">#2EA3E6</color>
+    <color name="multiple_image_select_primary">#2EA3E6</color>
+    <color name="multiple_image_select_primaryText">#FFFFFF</color>
+    <!--结束-->
+
+    <!--使用address自定义的的颜色-->
+    <color name="addressTabIndicatorColor">#F64642</color>
+    <color name="addressTabSelectedTextColor">#F64642</color>
+    <color name="addressTabTextColor">#262626</color>
+    <color name="addressRecycleViewSelectedColor">#F64642</color>
+    <color name="addressRecycleViewUnSelectedColor">#262626</color>
+    <color name="addressSureUnClickColor">#B9B9B9</color>
+    <color name="addressSureCanClickColor">#F64642</color>
+    <!--结束-->
+    <!--dialog弹窗颜色-->
+    <color name="dialogSureTextColor">#0066ee</color>
+    <color name="dialogSureBackgroundColor">#ffffff</color>
+    <color name="dialogCancelTextColor">#232323</color>
+    <color name="dialogCancelBackgroundColor">#ffffff</color>
+    <color name="dialogTitleTextColor">#000000</color>
+    <color name="dialogContentTextColor">#232323</color>
+    <color name="dialogDividerColor">#f5f5f5</color>
+    <color name="dialogVerTitleTextColor">#2EA3E6</color>
+    <color name="dialogVerDividerColor">#2EA3E6</color>
+    <color name="dialogVerBtnDividerColor">#f5f5f5</color>
+    <color name="dialogVerBtnColor">#232323</color>
+</resources>

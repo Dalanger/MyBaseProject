@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--dialog加载progress样式-->
+    <style name="CustomProgressBar" parent="Base.Widget.AppCompat.ProgressBar">
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:indeterminateDrawable">@drawable/ring_dialog</item>
+    </style>
+</resources>

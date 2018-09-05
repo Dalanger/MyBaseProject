@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dimen_260"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_15"
+        android:text="选择照片"
+        android:textColor="@color/dialogVerTitleTextColor"
+        android:textSize="@dimen/dimen_16" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1"
+        android:background="@color/dialogVerDividerColor" />
+
+    <TextView
+        android:id="@+id/btn_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_15"
+        android:text="拍照"
+        android:textColor="@color/dialogVerBtnColor"
+        android:textSize="@dimen/dimen_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0.5"
+        android:background="@color/dialogVerBtnDividerColor" />
+
+    <TextView
+        android:id="@+id/btn_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_15"
+        android:text="从手机相册获取"
+        android:textColor="@color/dialogVerBtnColor"
+        android:textSize="@dimen/dimen_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dialogVerBtnDividerColor" />
+
+    <TextView
+        android:id="@+id/btn_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_15"
+        android:text="其他"
+        android:textColor="@color/dialogVerBtnColor"
+        android:textSize="@dimen/dimen_14"
+        android:visibility="gone" />
+
+</LinearLayout>

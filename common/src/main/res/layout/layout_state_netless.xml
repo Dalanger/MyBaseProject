@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_timeout"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="300dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/error_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="4dp"
+        android:background="@mipmap/icon_netless" />
+
+    <TextView
+        android:layout_margin="@dimen/dimen_10"
+        android:text="网络似乎开了小差"
+        android:id="@+id/error_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black33"
+        android:textSize="@dimen/dimen_16" />
+
+    <TextView
+        android:background="@drawable/stroke_gray_white_r5"
+        android:paddingLeft="@dimen/dimen_12"
+        android:paddingRight="@dimen/dimen_12"
+        android:paddingTop="@dimen/dimen_3"
+        android:paddingBottom="@dimen/dimen_3"
+        android:text="点我重试"
+        android:textSize="@dimen/dimen_14"
+        android:textColor="@color/gray99"
+        android:id="@+id/retry_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion deps.build_version.compileSdkVersion
+    buildToolsVersion deps.build_version.buildVersion
+    defaultConfig {
+        minSdkVersion deps.build_version.minSdkVersion
+        targetSdkVersion deps.build_version.targetSdkVersion
+        versionCode deps.build_version.versionCode
+        versionName deps.build_version.versionName
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    //support
+    api deps.support.appcompat
+    api deps.support.v4
+    api deps.support.design
+    api deps.gson.version
+    api deps.support.multidex
+    api deps.support.constraint_layout
+    //permission
+    api deps.permission.plugin
+    //glide
+    api deps.glide.glide
+    //retrofit
+    api deps.retrofit2.retrofit
+    api deps.retrofit2.converter_gson
+    api deps.retrofit2.adapter_rxjava
+    api deps.retrofit2.okhttp_log
+    //rxjava2
+    api deps.rxjava2.rxjava
+    api deps.rxjava2.rxandroid
+    //侧滑layout
+    api deps.swipe.api
+    //照片选择 预览
+    api deps.photo.select
+    api deps.photo.preview
+    //黄油刀
+    api deps.butter.api
+    annotationProcessor deps.butter.annotationProcessor
+    //状态栏
+    api deps.statusBar.api
+    //eventbus
+    api deps.eventbus.api
+    //上下拉刷新
+    api deps.pullRefresh.api
+}

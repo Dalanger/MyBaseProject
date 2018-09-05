@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:id="@+id/fl_inner"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:background="@color/grayF5">
+
+        <LinearLayout
+            android:paddingBottom="@dimen/dimen_5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_pull_to_refresh"
+                android:layout_width="@dimen/dimen_50"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/refresh01" />
+
+            <TextView
+                android:layout_marginTop="@dimen/dimen_2"
+                android:textSize="@dimen/dimen_12"
+                android:id="@+id/pull_to_load_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="玩命加载中" />
+        </LinearLayout>
+
+    </FrameLayout>
+</merge>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <scale
+        android:interpolator="@android:anim/accelerate_interpolator"
+        android:duration="1000"
+        android:fillAfter="true"
+        android:fromXScale="1.0"
+        android:fromYScale="1.0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:toXScale="0"
+        android:toYScale="0" />
+</set>
+
+<!--
+属性解释：
+interpolator：动画插入器，该功能在xml里设置貌似无效，需在代码中加
+fromXScale:从自身x轴长度多少倍开始缩放，如：fromXScale= 0.5表示从自身X轴长度0.5倍开始缩放
+toXScale:缩放到自身x轴长度多少倍结束,如：toXScale = 2.0表示x轴缩放到自身x轴长度2倍结束
+上面两条意思就是：该view的x轴从自身x轴长度的0.5倍开始缩放到自身x轴长度的2倍结束
+fromYScale：从自身y轴长度多少倍开始缩放，如：fromYScale= 0.5表示从自身y轴长度0.5倍开始缩放
+toYScale：缩放到自身y轴长度多少倍结束,如：toYScale = 2.0表示x轴缩放到自身y轴长度2倍结束
+pivotX:动画相对于控件X坐标的开始位置
+pivotY:动画相对于控件Y坐标的开始位置
+如：pivotX = 50%,pivotY = 50% 表示从该控件的中心开始缩放
+-->
