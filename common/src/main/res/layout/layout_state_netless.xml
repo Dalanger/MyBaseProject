@@ -25,7 +25,7 @@
         android:textSize="@dimen/dimen_16" />
 
     <TextView
-        android:background="@drawable/stroke_gray_white_r5"
+        android:background="@drawable/stroke_gray99_white_r5"
         android:paddingLeft="@dimen/dimen_12"
         android:paddingRight="@dimen/dimen_12"
         android:paddingTop="@dimen/dimen_3"

@@ -100,6 +100,11 @@ public class PhoneUtil {
 
     }
 
+    public static int getStatusBarHeight(Context context) {
+        // 获得状态栏高度
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        return context.getResources().getDimensionPixelSize(resourceId);
+    }
 
     public void callPhone(final Activity activity, final String phone) {
         Acp.getInstance(activity).request(new AcpOptions.Builder()

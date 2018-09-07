@@ -56,4 +56,11 @@ dependencies {
     api deps.eventbus.api
     //上下拉刷新
     api deps.pullRefresh.api
+    //适配器
+    api deps.adapter.api
+    //圆形头像
+    api deps.circle_img.api
+    //线程
+    api deps.thread.api
+
 }

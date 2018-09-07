@@ -10,10 +10,10 @@ deps.gradle = gradle
 gradle.plugin = "com.android.tools.build:gradle:3.1.3"
 
 //Android sdk and tools
-build_version.compileSdkVersion = 28
-build_version.buildVersion = "28.0.2"
+build_version.compileSdkVersion = 27
+build_version.buildVersion = "27.0.3"
 build_version.minSdkVersion = 16
-build_version.targetSdkVersion = 28
+build_version.targetSdkVersion = 27
 build_version.versionCode = 1
 build_version.versionName = "1.0.0"
 build_version.javaVersion = JavaVersion.VERSION_1_8
@@ -21,13 +21,13 @@ build_version.javaVersion = JavaVersion.VERSION_1_8
 //Android support
 def support = [:]
 deps.support = support
-support.appcompat = 'com.android.support:appcompat-v7:28.+'
-support.annotations = 'com.android.support:support-annotations:28.+'
-support.core_ui = 'com.android.support:support-core-ui:28.+'
-support.cardview = 'com.android.support:cardview-v7:28.+'
+support.appcompat = 'com.android.support:appcompat-v7:27.+'
+support.annotations = 'com.android.support:support-annotations:27.+'
+support.core_ui = 'com.android.support:support-core-ui:27.+'
+support.cardview = 'com.android.support:cardview-v7:27.+'
 support.constraint_layout = 'com.android.support.constraint:constraint-layout:1.0.2'
-support.design = 'com.android.support:design:28.+'
-support.v4 = 'com.android.support:support-v4:28.+'
+support.design = 'com.android.support:design:27.+'
+support.v4 = 'com.android.support:support-v4:27.+'
 support.multidex = 'com.android.support:multidex:1.0.3'
 
 //Kotlin
@@ -137,7 +137,7 @@ swipe.api = 'cn.bingoogolapple:bga-swipebacklayout:1.1.9@aar'
 //万能recyclerview adapter
 def adapter = [:]
 deps.adapter = adapter
-adapter.api = 'cn.bingoogolapple:bga-adapter:1.2.9@aar'
+adapter.api = 'cn.bingoogolapple:bga-adapter:1.1.8@aar'
 
 //黄油刀
 def butter = [:]

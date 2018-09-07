@@ -3,29 +3,35 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:gravity="center"
     android:orientation="vertical"
+    android:minWidth="@dimen/dimen_280"
     android:background="@drawable/rec_white_r10"
     android:layout_width="wrap_content"
-    android:minWidth="280dp"
     android:layout_height="wrap_content">
 
     <TextView
         android:layout_marginTop="@dimen/dimen_15"
         android:id="@+id/tv_title"
-        android:text="提示"
+        android:text="修改昵称"
         android:textStyle="bold"
         android:textColor="@color/dialogTitleTextColor"
         android:textSize="@dimen/dimen_16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/tv_content"
+    <EditText
+        android:textCursorDrawable="@null"
+        android:background="@drawable/stroke_graydd_white_r5"
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_20"
+        android:hint="请输入昵称"
+        android:paddingTop="@dimen/dimen_5"
+        android:paddingBottom="@dimen/dimen_5"
+        android:paddingLeft="@dimen/dimen_10"
+        android:paddingRight="@dimen/dimen_10"
         android:textColor="@color/dialogContentTextColor"
-        android:textSize="@dimen/dimen_15"
-        android:text="确定要退出登录?"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textSize="@dimen/dimen_15"/>
 
 
     <View

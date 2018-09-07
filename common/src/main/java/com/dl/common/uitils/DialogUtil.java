@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 
 import com.dl.common.R;
+import com.dl.common.widget.dialog.DialogInput;
 import com.dl.common.widget.dialog.DialogNormal;
 import com.dl.common.widget.dialog.DialogSingle;
 import com.dl.common.widget.dialog.DialogVertical;
@@ -97,6 +98,14 @@ public class DialogUtil {
         dialog.setButton3(text3);
         return dialog;
     }
+//-------------------------------------------输入框弹窗-------------------------------------------------------------------------//
+
+    public static DialogInput buildInputDialog(Context context, String title, String content) {
+        DialogInput dialogInput = new DialogInput(context);
+        dialogInput.setTitle(title);
+        dialogInput.setContent(content);
+        return dialogInput;
+    }
 
     //-------------------------------------------选择图片弹窗-------------------------------------------------------------------------//
 
@@ -105,14 +114,14 @@ public class DialogUtil {
      *
      * @param context
      * @param takePhoto
-     * @param isCrop    是否裁剪
+     * @param type    type=0 不裁剪  1 1:1裁剪 2 4:3裁剪 3 16:9裁剪
      */
-    public static void uploadPhoto(Context context, final TakePhoto takePhoto, final boolean isCrop) {
+    public static void uploadPhoto(Context context, final TakePhoto takePhoto, final int type) {
 
         final DialogVertical cameraDialog = buildDialogVertical(context, "选择照片", "拍照", "从手机相册选择");
 
 
-        final File file = new File(FileUtil.IMG_FILE_PATH + "/" + System.currentTimeMillis() +FileUtil.JPG_SUFFIX);
+        final File file = new File(FileUtil.IMG_FILE_PATH + "/" + System.currentTimeMillis() + FileUtil.JPG_SUFFIX);
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();
         }
@@ -124,8 +133,8 @@ public class DialogUtil {
         cameraDialog.setOnBtn1Listener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isCrop) {
-                    takePhoto.onPickFromCaptureWithCrop(imageUri, getCropOptions());
+                if (type!=0) {
+                    takePhoto.onPickFromCaptureWithCrop(imageUri, getCropOptions(type));
                 } else {
                     takePhoto.onPickFromCapture(imageUri);
                 }
@@ -136,8 +145,8 @@ public class DialogUtil {
         cameraDialog.setOnBtn2Listener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isCrop) {
-                    takePhoto.onPickFromGalleryWithCrop(imageUri, getCropOptions());
+                if (type!=0) {
+                    takePhoto.onPickFromGalleryWithCrop(imageUri, getCropOptions(type));
                 } else {
                     takePhoto.onPickFromGallery();
                 }
@@ -149,8 +158,7 @@ public class DialogUtil {
     }
 
 
-
-    public static void uploadMultiplePhoto(Context context, final TakePhoto takePhoto, final int limit,final boolean isCrop) {
+    public static void uploadMultiplePhoto(Context context, final TakePhoto takePhoto, final int limit, final int type) {
 
         final File file = new File(FileUtil.IMG_FILE_PATH + "/" + System.currentTimeMillis() + FileUtil.JPG_SUFFIX);
         final DialogVertical cameraDialog = buildDialogVertical(context, "选择照片", "拍照", "从手机相册选择");
@@ -164,8 +172,8 @@ public class DialogUtil {
             @Override
             public void onClick(View v) {
 
-                if (isCrop) {
-                    takePhoto.onPickFromCaptureWithCrop(imageUri, getCropOptions());
+                if (type!=0) {
+                    takePhoto.onPickFromCaptureWithCrop(imageUri, getCropOptions(type));
                 } else {
                     takePhoto.onPickFromCapture(imageUri);
                 }
@@ -210,14 +218,25 @@ public class DialogUtil {
     }
 
     //裁剪
-    private static CropOptions getCropOptions() {
+    private static CropOptions getCropOptions(int type) {
         //可以裁剪
         //使用第三方的工具，如果使用自带的话设为true
         boolean withWonCrop = false;
 
         CropOptions.Builder builder = new CropOptions.Builder();
-        //宽/高
-//        builder.setAspectX(width).setAspectY(height);
+        switch (type) {
+            case 1:
+                builder.setAspectX(1).setAspectY(1);
+                break;
+            case 2:
+                builder.setAspectX(4).setAspectY(3);
+                break;
+            case 3:
+                builder.setAspectX(16).setAspectY(9);
+                break;
+        }
+//        宽/高
+
         //宽x高
 //        builder.setOutputX(width).setOutputY(height);
 

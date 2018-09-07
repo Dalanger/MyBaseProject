@@ -69,13 +69,13 @@
     <!--结束-->
 
     <!--使用address自定义的的颜色-->
-    <color name="addressTabIndicatorColor">#F64642</color>
-    <color name="addressTabSelectedTextColor">#F64642</color>
+    <color name="addressTabIndicatorColor">#2EA3E6</color>
+    <color name="addressTabSelectedTextColor">#2EA3E6</color>
     <color name="addressTabTextColor">#262626</color>
-    <color name="addressRecycleViewSelectedColor">#F64642</color>
+    <color name="addressRecycleViewSelectedColor">#2EA3E6</color>
     <color name="addressRecycleViewUnSelectedColor">#262626</color>
     <color name="addressSureUnClickColor">#B9B9B9</color>
-    <color name="addressSureCanClickColor">#F64642</color>
+    <color name="addressSureCanClickColor">#2EA3E6</color>
     <!--结束-->
     <!--dialog弹窗颜色-->
     <color name="dialogSureTextColor">#0066ee</color>
@@ -84,6 +84,7 @@
     <color name="dialogCancelBackgroundColor">#ffffff</color>
     <color name="dialogTitleTextColor">#000000</color>
     <color name="dialogContentTextColor">#232323</color>
+    <color name="dialogHintTextColor">#CCCCCC</color>
     <color name="dialogDividerColor">#f5f5f5</color>
     <color name="dialogVerTitleTextColor">#2EA3E6</color>
     <color name="dialogVerDividerColor">#2EA3E6</color>

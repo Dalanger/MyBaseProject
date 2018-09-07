@@ -164,7 +164,10 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
                 List<AddressBean.AddressItemBean> districtBean=new ArrayList<>();
                 mTabLayout.getTabAt(0).setText(prov);
                 mTabLayout.getTabAt(1).setText(city);
-                mTabLayout.getTabAt(2).setText(district);
+                if (pickerType==0) {
+                    mTabLayout.getTabAt(2).setText(district);
+                }
+
 
                 for (int i = 0; i < provBean.size(); i++) {
                     if (provBean.get(i).getN().equals(prov)) {
@@ -185,23 +188,33 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
                     }
                 }
 
-                for (AddressBean.AddressItemBean itemBean : mYwpAddressBean.getDistrict()) {
-                    if (itemBean.getP().equals(mSelectCity.getI()))
-                        districtBean.add(itemBean);
+                if (pickerType == 0) {
+                    for (AddressBean.AddressItemBean itemBean : mYwpAddressBean.getDistrict()) {
+                        if (itemBean.getP().equals(mSelectCity.getI()))
+                            districtBean.add(itemBean);
+                    }
+
+                    for (int i = 0; i < districtBean.size(); i++) {
+                        if (districtBean.get(i).getN().equals(district)) {
+                            mSelectDistrict = districtBean.get(i);
+                            mSelectDistrictPosition = i;
+                            break;
+                        }
+                    }
+                    mTabLayout.getTabAt(2).select();
+                    mRvData.clear();
+                    mRvData.addAll(districtBean);
+                    mAdapter.notifyDataSetChanged();
+                    mRvList.scrollToPosition(mSelectDistrictPosition);
+                } else {
+                    mTabLayout.getTabAt(1).select();
+                    mRvData.clear();
+                    mRvData.addAll(cityBean);
+                    mAdapter.notifyDataSetChanged();
+                    mRvList.scrollToPosition(mSelectCityPosition);
                 }
 
-                for (int i = 0; i < districtBean.size(); i++) {
-                    if (districtBean.get(i).getN().equals(district)) {
-                        mSelectDistrict=districtBean.get(i);
-                        mSelectDistrictPosition=i;
-                        break;
-                    }
-                }
-                mTabLayout.getTabAt(2).select();
-                mRvData.clear();
-                mRvData.addAll(districtBean);
-                mAdapter.notifyDataSetChanged();
-                mRvList.scrollToPosition(mSelectDistrictPosition);
+
 
                 // 确定按钮变亮
                 mTvSure.setTextColor(defaultSureCanClickColor);
@@ -248,8 +261,8 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
                     mSelectDistrict != null) {
                 //   回调接口
                 if (mOnAddressPickerSureListener != null) {
-                    mOnAddressPickerSureListener.onSureClick(mSelectProvice.getN() + " " + mSelectCity.getN() + " " + mSelectDistrict.getN() + " ",
-                            mSelectProvice.getN(), mSelectCity.getN(), mSelectDistrict.getN());
+                    mOnAddressPickerSureListener.onSureClick(mSelectProvice.getN(),  mSelectCity.getN(),mSelectDistrict.getN(),
+                            mSelectProvice.getI(), mSelectCity.getI(), mSelectDistrict.getI());
                 }
             } else {
                 Toast.makeText(mContext, "地址还没有选完整哦", Toast.LENGTH_SHORT).show();
@@ -259,8 +272,8 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
                     mSelectCity != null ) {
                 //   回调接口
                 if (mOnAddressPickerSureListener != null) {
-                    mOnAddressPickerSureListener.onSureClick(mSelectCity.getN() + " " ,
-                            mSelectProvice.getN(), mSelectCity.getN(),"");
+                    mOnAddressPickerSureListener.onSureClick(mSelectProvice.getN(),  mSelectCity.getN(),"",
+                            mSelectProvice.getI(), mSelectCity.getI(),"");
                 }
             } else {
                 Toast.makeText(mContext, "地址还没有选完整哦", Toast.LENGTH_SHORT).show();
@@ -455,7 +468,7 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
      * 点确定回调这个接口
      */
     public interface OnAddressPickerSureListener {
-        void onSureClick(String address, String provinceCode, String cityCode, String districtCode);
+        void onSureClick(String province, String city, String district,String provinceCode, String cityCode, String districtCode);
     }
 
     public void setOnAddressPickerSure(OnAddressPickerSureListener listener) {
@@ -479,11 +492,8 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
 //
 //            @Override
 //
-//            public void onSureClick(String address, String provinceCode, String cityCode, String districtCode) {
+//            public void onSureClick(String province, String city, String district,String provinceCode, String cityCode, String districtCode) {
 //
-//                tvCity.setText(address);
-//                province = provinceCode;
-//                city = cityCode;
 //
 //                dialog.dismiss();
 //

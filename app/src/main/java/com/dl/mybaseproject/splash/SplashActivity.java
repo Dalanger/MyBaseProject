@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.dl.mybaseproject.MainActivity;
+import com.dl.mybaseproject.main.MainActivity;
 import com.dl.mybaseproject.R;
 
 public class SplashActivity extends AppCompatActivity {
