@@ -1,5 +1,5 @@
 # MyBaseProject
-一个RxJava+Retrofit+Mvp的项目框架 
+一个RxJava+Retrofit+Mvp的项目框架<br> 
 common module 包含常用工具类及Base封装,后续将一一做成demo展示
 
 Demo1<br>
