@@ -33,8 +33,11 @@
             android:theme="@style/AppTheme.Transparent" />
         <activity
             android:name=".demo1.ShareElementActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent" />
-        <activity android:name=".demo2.Demo2Activity"></activity>
+        <activity android:name=".demo2.Demo2Activity"
+            android:theme="@style/AppTheme.Transparent"
+            />
     </application>
 
 </manifest>

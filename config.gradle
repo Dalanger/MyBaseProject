@@ -201,5 +201,9 @@ def emoji=[:]
 deps.emoji=emoji
 emoji.api='com.lqr.emoji:library:1.0.2'
 
+//viewpager3D
+def viewpager=[:]
+deps.viewpager=viewpager
+viewpager.api='com.bambootang:viewpager3d:1.4'
 
 

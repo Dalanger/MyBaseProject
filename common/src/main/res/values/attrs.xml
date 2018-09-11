@@ -42,4 +42,22 @@
     <attr name="styleLoadingLayout" format="reference" />
 
 
+    <declare-styleable name="BambooFlowViewPager">
+        <attr name="pageSpace" format="dimension" />
+        <attr name="pageRound" format="float" />
+        <attr name="translationFactor" format="float" />
+        <attr name="scaleFactor" format="float" />
+        <attr name="rotationYFactor" format="float" />
+        <attr name="reflectAlphaFactor" format="float" />
+        <attr name="maxRotationY" format="float" />
+        <attr name="rotaionYAble" format="boolean" />
+        <attr name="clipAble" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="PageIndicator">
+        <attr name="selected_color" format="color|reference"/>
+        <attr name="unselected_color" format="color|reference"/>
+        <attr name="count" format="integer"/>
+    </declare-styleable>
 </resources>

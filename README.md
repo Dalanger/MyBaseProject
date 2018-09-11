@@ -8,4 +8,4 @@ Demo1<br>
 3.头像放大预览使用共享元素动画 <br>
 4.仿淘宝/京东地址选择 <br>
 5. 常用dialog展示<br>
-![image](https://github.com/Dalanger/MyBaseProject/blob/dalang/demo1.gif)
+![image](https://github.com/Dalanger/MyBaseProject/blob/dalang/img/demo1.gif)

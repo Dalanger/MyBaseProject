@@ -50,7 +50,8 @@ public abstract class BaseActivity extends AppCompatActivity implements  BGASwip
         initSwipeBackFinish();
         getTakePhoto().onCreate(savedInstanceState);
         //个别activity状态不同 单独写
-        if (this.getClass().getName().equals("com.dl.mybaseproject.demo1.Demo1Activity")) {
+        if (this.getClass().getName().equals("com.dl.mybaseproject.demo1.Demo1Activity")
+                ||this.getClass().getName().equals("com.dl.mybaseproject.demo2.Demo2Activity")) {
 
         } else {
             StatusBarUtil.setColorForSwipeBack(this, color(R.color.colorPrimary), 50);

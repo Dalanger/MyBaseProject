@@ -26,6 +26,7 @@ dependencies {
     //support
     api deps.support.appcompat
     api deps.support.v4
+    api deps.support.cardview
     api deps.support.design
     api deps.gson.version
     api deps.support.multidex

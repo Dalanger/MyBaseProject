@@ -59,7 +59,9 @@ dependencies {
     api project(':common')
     //黄油刀 虽然common里已经有此依赖 但如果这里不写的话 不起作用 view会报空指针
     api deps.butter.api
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
     annotationProcessor deps.butter.annotationProcessor
+    api deps.viewpager.api
+    api deps.banner.api
 
 }

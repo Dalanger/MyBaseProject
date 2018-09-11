@@ -11,6 +11,7 @@ import com.dl.common.base.BaseActivity;
 import com.dl.common.uitils.ToastUtil;
 import com.dl.mybaseproject.R;
 import com.dl.mybaseproject.demo1.Demo1Activity;
+import com.dl.mybaseproject.demo2.Demo2Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +69,7 @@ public class MainActivity extends BaseActivity {
     private void initData() {
 
         data.add(new MainDataBean(R.mipmap.home_camera,"毛玻璃效果/照片选择/头像放大动画/时间选择/地址选择/dialog展示", Demo1Activity.class));
+        data.add(new MainDataBean(R.mipmap.home_demo2,"仿京东顶部渐变/自定义指示器/viewpager3D效果/瀑布流", Demo2Activity.class));
 
         for (int i = 0; i < 30; i++) {
             data.add(new MainDataBean(R.mipmap.home_login,"待续", Demo1Activity.class));

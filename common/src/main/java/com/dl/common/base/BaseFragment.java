@@ -26,7 +26,7 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
  * Created by dalang on 2018/8/30.
  * 结合之前的项目  对baseFragment进行更完善的封装
  */
-public abstract class BaseFragment<V extends IView,P extends IPresenter<V>> extends Fragment implements MvpCallback<V,P> {
+public abstract class BaseFragment extends Fragment{
 
     public Activity mActivity;
     public Context mContext;
@@ -35,9 +35,6 @@ public abstract class BaseFragment<V extends IView,P extends IPresenter<V>> exte
     private boolean isFragmentVisible;
     //是否是第一次开启网络加载
     public boolean isFirst;
-    public P mPresenter;
-    public V mView;
-
 
 
     @Override
@@ -55,11 +52,6 @@ public abstract class BaseFragment<V extends IView,P extends IPresenter<V>> exte
         ButterKnife.bind(this, rootView);
         mActivity = getActivity();
         mContext = getContext();
-        mView = createView();
-        if (mPresenter == null) {
-            mPresenter = createPresenter();
-        }
-        mPresenter.attachView(mView);
         initView();
         //可见，但是并没有加载过
         if (isFragmentVisible && !isFirst) {
@@ -98,7 +90,6 @@ public abstract class BaseFragment<V extends IView,P extends IPresenter<V>> exte
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mPresenter.detachView();
     }
 
 

@@ -17,7 +17,7 @@ public class MainAdapter extends BGARecyclerViewAdapter<MainDataBean> {
 
     private boolean mFirstOnlyEnable=false;
     private boolean mOpenAnimationEnable=true;
-    private BaseAnimation mSelectAnimation = new ScaleInAnimation();
+    private BaseAnimation mSelectAnimation = new ScaleInAnimation();//由小到大动画
     private int mLastPosition=-1;
     private Interpolator mInterpolator = new LinearInterpolator();
 
