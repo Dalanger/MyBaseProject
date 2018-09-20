@@ -14,7 +14,6 @@ public class NoDataModel {
     private String msg;
     private int code;
 
-
     public String getMsg() {
         return msg;
     }
@@ -30,4 +29,5 @@ public class NoDataModel {
     public void setCode(int code) {
         this.code = code;
     }
+
 }

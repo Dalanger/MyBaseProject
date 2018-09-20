@@ -7,10 +7,10 @@ package com.dl.common.base;
  */
 public interface IView {
     void showMessage(String msg); //toast
-    void showProgress();//dialog形式的加载
-    void hideProgress();//隐藏dialog
-    void showLoading();//整个页面显示加载页
-    void dismissLoading();//显示页面隐藏加载页
-    void showErrorUI();//整个页面网络错误页
-    void showErrorDialog();//dialog形式显示错误
+    void showDialogLoading();//dialog形式的加载
+    void dismissDialogLoading();//隐藏dialog
+    void showUILoading();//整个页面显示加载页
+    void dismissUILoading();//显示页面隐藏加载页
+    void errorUI();//整个页面网络错误页
+    void errorDialog();//dialog形式显示错误
 }

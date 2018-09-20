@@ -27,7 +27,7 @@ public class MainAdapter extends BGARecyclerViewAdapter<MainDataBean> {
 
     @Override
     protected void fillData(BGAViewHolderHelper helper, int position, MainDataBean model) {
-         helper.getImageView(R.id.iv_logo).setImageResource(R.mipmap.home_camera);
+         helper.getImageView(R.id.iv_logo).setImageResource(model.getImgRes());
          helper.setText(R.id.tv_text,model.getContent());
          helper.setText(R.id.tv_name,"Demo"+(position+1));
     }

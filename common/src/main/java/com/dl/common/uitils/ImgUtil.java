@@ -123,9 +123,9 @@ public class ImgUtil {
     /**
      * 得到本地或者网络上的bitmap url - 网络或者本地图片的绝对路径,比如:
      * <p>
-     * A.网络路径: url="http://blog.foreverlove.us/girl2.png" ;
+     * A.网络路径: url="http://" ;
      * <p>
-     * B.本地路径:url="file://mnt/sdcard/photo/image.png";
+     * B.本地路径:url="file://";
      * <p>
      * C.支持的图片格式 ,png, jpg,bmp,gif等等
      *
@@ -137,13 +137,10 @@ public class ImgUtil {
 
     public static Bitmap getBitmapToBlur(String url, int scaleRatio) {
 
-
         int blurRadius = 5;//通常设置为8就行。
         if (scaleRatio <= 0) {
             scaleRatio = 10;
         }
-
-
         Bitmap originBitmap = null;
         InputStream in = null;
         BufferedOutputStream out = null;
@@ -186,7 +183,7 @@ public class ImgUtil {
     public static Bitmap bitmapToBlur(Bitmap originBitmap, int scaleRatio) {
         //        int scaleRatio = 10;
         // 增大scaleRatio缩放比，使用一样更小的bitmap去虚化可以到更好的得模糊效果，而且有利于占用内存的减小；
-        int blurRadius = 5;//通常设置为8就行。
+        int blurRadius = 5;
         //增大blurRadius，可以得到更高程度的虚化，不过会导致CPU更加intensive
 
 

@@ -63,5 +63,4 @@ dependencies {
     annotationProcessor deps.butter.annotationProcessor
     api deps.viewpager.api
     api deps.banner.api
-
 }

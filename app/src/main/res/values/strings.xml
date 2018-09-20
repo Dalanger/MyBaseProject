@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Demo集</string>
+    <string name="demo3_text1">情景1.复杂页面一次性要调用多个接口使用merge或concat操作符. 其中concat保证请求顺序</string>
+    <string name="demo3_text2">情景2.一个接口调用时依赖另一个接口的返回值时使用flatMap操作符</string>
+    <string name="demo3_text3">情景3.两个接口的数据相互结合才能显示UI时使用ZIP操作符</string>
+    <string name="demo3_text4">情景4.仅需要接口中某些符合条件的数据时使用filter操作符</string>
 </resources>

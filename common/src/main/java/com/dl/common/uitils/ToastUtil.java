@@ -69,6 +69,10 @@ public class ToastUtil {
         customCenter(getContext(), message, Toast.LENGTH_SHORT,  false).show();
     }
 
+    public static void error() {
+        customCenter(getContext(), "请求失败", Toast.LENGTH_SHORT,  false).show();
+    }
+
 //*******************************************内需方法********************************************//
 
 

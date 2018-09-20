@@ -135,12 +135,11 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
             while ((line = addressJsonStream.readLine()) != null) {
                 jsonSB.append(line);
             }
-            Log.e("dalang",jsonSB.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
         Gson gson=new Gson();
-        // 将数据转换为对象  手动加入try catch 捕捉异常
+        // 将数据转换为对象
         try {
             mYwpAddressBean = gson.fromJson(jsonSB.toString(),AddressBean.class);
         }catch (Exception e){
@@ -435,7 +434,6 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
                             break;
                         case 2:
                             mSelectDistrict = mRvData.get(position);
-                            // 没了，选完了，这个时候可以点确定了
                             mTabLayout.getTabAt(2).setText(mSelectDistrict.getN());
                             notifyDataSetChanged();
                             // 确定按钮变亮

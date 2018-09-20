@@ -219,8 +219,7 @@ public class DialogUtil {
 
     //裁剪
     private static CropOptions getCropOptions(int type) {
-        //可以裁剪
-        //使用第三方的工具，如果使用自带的话设为true
+
         boolean withWonCrop = false;
 
         CropOptions.Builder builder = new CropOptions.Builder();
@@ -235,10 +234,6 @@ public class DialogUtil {
                 builder.setAspectX(16).setAspectY(9);
                 break;
         }
-//        宽/高
-
-        //宽x高
-//        builder.setOutputX(width).setOutputY(height);
 
         builder.setWithOwnCrop(withWonCrop);
         return builder.create();
