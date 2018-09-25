@@ -20,7 +20,7 @@ Demo2<br>
 <br>
 <br>
 Demo3<br>
-1.RxJava常用操作符merge
-2.RxJava常用操作符flatMap
-3.RxJava常用操作符zip
+1.RxJava常用操作符merge<br>
+2.RxJava常用操作符flatMap<br>
+3.RxJava常用操作符zip<br>
 ![image](https://github.com/Dalanger/MyBaseProject/blob/dalang/img/demo3.gif)
