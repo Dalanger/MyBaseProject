@@ -11,7 +11,7 @@
 
 
         <ImageView
-            android:src="@mipmap/home_login"
+            android:src="@mipmap/home_demo4"
             android:layout_width="@dimen/dimen_40"
             android:layout_height="@dimen/dimen_40"
            />

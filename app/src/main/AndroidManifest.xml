@@ -39,10 +39,11 @@
             android:name=".demo2.Demo2Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent" />
-        <activity android:name=".demo3.view.Demo3Activity"
+        <activity
+            android:name=".demo3.view.Demo3Activity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Transparent"
-            />
+            android:theme="@style/AppTheme.Transparent" />
+        <activity android:name=".demo4.Demo4Activity"></activity>
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ import com.dl.mybaseproject.R;
 import com.dl.mybaseproject.demo1.Demo1Activity;
 import com.dl.mybaseproject.demo2.Demo2Activity;
 import com.dl.mybaseproject.demo3.view.Demo3Activity;
+import com.dl.mybaseproject.demo4.Demo4Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +73,7 @@ public class MainActivity extends BaseActivity {
         data.add(new MainDataBean(R.mipmap.home_camera,"毛玻璃效果/照片选择/头像放大动画/时间选择/地址选择/dialog展示", Demo1Activity.class));
         data.add(new MainDataBean(R.mipmap.home_demo2,"仿京东顶部渐变/自定义指示器/viewpager3D效果/瀑布流", Demo2Activity.class));
         data.add(new MainDataBean(R.mipmap.home_demo3,"结合MVP使用RxJava常用操作符merge/flatMap/zip/filter", Demo3Activity.class));
+        data.add(new MainDataBean(R.mipmap.home_demo4,"仿支付宝首页顶部伸缩滑动/中间层下拉刷新", Demo4Activity.class));
 
         for (int i = 0; i < 30; i++) {
             data.add(new MainDataBean(R.mipmap.home_more,"待续", Demo1Activity.class));

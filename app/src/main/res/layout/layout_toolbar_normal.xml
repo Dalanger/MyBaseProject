@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:id="@+id/layout_toolbar_normal"
+    android:background="@color/colorPrimary"
+    android:layout_height="@dimen/dimen_50">
+
+    <RelativeLayout
+        android:layout_toLeftOf="@id/iv_contact"
+        android:layout_margin="@dimen/dimen_10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_demo4_search"
+        android:paddingLeft="@dimen/dimen_15">
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="@dimen/dimen_15"
+            android:layout_height="@dimen/dimen_15"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_search"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_search"
+            android:background="@null"
+            android:hint="蚂蚁森林"
+            android:enabled="false"
+            android:paddingLeft="@dimen/dimen_5"
+            android:textColorHint="@color/white"
+            android:textSize="14sp"/>
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_toLeftOf="@id/iv_add"
+        android:id="@+id/iv_contact"
+        android:padding="@dimen/dimen_10"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/ic_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_add"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/dimen_10"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/ic_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <View
+        android:id="@+id/bg_toolbar_normal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

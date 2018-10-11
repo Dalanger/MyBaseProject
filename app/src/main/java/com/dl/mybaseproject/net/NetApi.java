@@ -24,7 +24,7 @@ public interface NetApi {
     @POST("GetGoodsType")
     Observable<TestBean2> getGoodsType();
 
-    //获取文案列表 Type员工须知
+    //获取文案列表
     @FormUrlEncoded
     @POST("GetNews")
     Observable<TestBean4> getAgreementList(@Field("Type")String type);

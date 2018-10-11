@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:id="@+id/layout_toolbar_collapse"
+    android:background="@color/colorPrimary"
+    android:layout_height="@dimen/dimen_50">
+
+    <ImageView
+        android:id="@+id/iv_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/dimen_10"
+        android:src="@mipmap/ic_scan"/>
+
+    <ImageView
+        android:id="@+id/iv_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/dimen_10"
+        android:layout_toRightOf="@+id/iv_scan"
+        android:src="@mipmap/ic_payment"/>
+
+    <ImageView
+        android:id="@+id/iv_charge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/dimen_10"
+        android:layout_toRightOf="@+id/iv_pay"
+        android:src="@mipmap/ic_transfer"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/dimen_10"
+        android:layout_toRightOf="@+id/iv_charge"
+        android:src="@mipmap/ic_card"/>
+
+    <ImageView
+        android:padding="@dimen/dimen_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:adjustViewBounds="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_add"/>
+
+    <View
+        android:id="@+id/bg_toolbar_collapse"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

@@ -75,7 +75,5 @@ public class Demo3Model extends BaseModel implements IDemo3Contract.Model {
     }
 
 
-
-
 }
 

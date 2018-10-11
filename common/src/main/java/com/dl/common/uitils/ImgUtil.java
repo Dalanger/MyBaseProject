@@ -1,19 +1,25 @@
 package com.dl.common.uitils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
-import android.os.Build;
-import android.support.v4.content.FileProvider;
 import android.util.Base64;
+import android.util.Log;
+import android.view.View;
+import android.widget.ScrollView;
+
+import com.jph.takephoto.uitl.TUriParse;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -101,20 +107,12 @@ public class ImgUtil {
      * @return
      */
     public static Uri getUriForFile(Context context, File file) {
-        if (context == null || file == null) {
-            throw new NullPointerException();
-        }
-        Uri uri;
-        if (Build.VERSION.SDK_INT >= 24) {
-            uri = FileProvider.getUriForFile(context.getApplicationContext(), context.getApplicationContext().getPackageName(), file);
-        } else {
-            uri = Uri.fromFile(file);
-        }
-        return uri;
+
+        return TUriParse.getUriForFile(context,file);
     }
 
 
-
+//-------------------------------------------高斯模糊------------------------------------------------------//
 
 
     /**
@@ -420,6 +418,124 @@ public class ImgUtil {
         bitmap.setPixels(pix, 0, w, 0, 0, w, h);
 
         return (bitmap);
+    }
+
+
+
+    //-------------------------------------------截图分享------------------------------------------------------//
+
+    //保存图片到手机
+    public static String saveImage(Activity mActivity, Bitmap bitmap, String imgName) {
+
+        String dir =FileUtil.IMG_FILE_PATH;
+        File file = new File(dir);
+        if (!file.exists()) {
+            file.mkdir();
+        }
+
+        String imagePath = dir + imgName + ".jpg";
+        File imageFile = new File(imagePath);
+        if (!imageFile.exists()) {
+            try {
+                imageFile.createNewFile();
+            } catch (IOException e) {
+                Log.d("test", e.getMessage());
+            }
+        }
+
+        saveBitmap(bitmap, imagePath);
+        insertImage(mActivity, imagePath);
+
+        return imagePath;
+    }
+
+    /**
+     * 把bitmap保存到文件中
+     *
+     * @param bitmap
+     * @param filePath
+     */
+    public static void saveBitmap(Bitmap bitmap, String filePath) {
+        FileOutputStream out = null;
+        try {
+            out = new FileOutputStream(filePath);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+        } catch (Exception e) {
+            Log.d("test", e.getMessage());
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+            } catch (IOException e) {
+                Log.d("test", e.getMessage());
+            }
+        }
+    }
+
+    //广播插入相册
+    private static MediaScannerConnection sMediaScannerConnection;
+
+    public static void insertImage(Context context, final String filePath) {
+        sMediaScannerConnection = new MediaScannerConnection(context, new MediaScannerConnection.MediaScannerConnectionClient() {
+            @Override
+            public void onMediaScannerConnected() {
+                Log.d("test", "scannerConnected, scan local path:" + filePath);
+                sMediaScannerConnection.scanFile(filePath, "image/*");
+            }
+
+            @Override
+            public void onScanCompleted(String path, Uri uri) {
+                Log.d("test", "scan complete");
+                sMediaScannerConnection.disconnect();
+            }
+        });
+        sMediaScannerConnection.connect();
+    }
+
+
+    /**
+     * 截取除了导航栏之外的整个屏幕
+     */
+    private Bitmap screenShotWholeScreen(Activity activity) {
+        View dView = activity.getWindow().getDecorView();
+        dView.setDrawingCacheEnabled(true);
+        dView.buildDrawingCache();
+        Bitmap bitmap = Bitmap.createBitmap(dView.getDrawingCache());
+        return bitmap;
+    }
+
+
+    /**
+     * 使用View的缓存功能，截取指定区域的View
+     */
+    private Bitmap screenShotView(View view) {
+        //开启缓存功能
+        view.setDrawingCacheEnabled(true);
+        //创建缓存
+        view.buildDrawingCache();
+        //获取缓存Bitmap
+        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
+        return bitmap;
+    }
+
+
+
+    /**
+     * 截取scrollview的屏幕
+     **/
+    public static Bitmap getScrollViewBitmap(ScrollView scrollView) {
+        int h = 0;
+        Bitmap bitmap;
+        for (int i = 0; i < scrollView.getChildCount(); i++) {
+            h += scrollView.getChildAt(i).getHeight();
+        }
+        // 创建对应大小的bitmap
+        bitmap = Bitmap.createBitmap(scrollView.getWidth(), h,
+                Bitmap.Config.ARGB_8888);
+        final Canvas canvas = new Canvas(bitmap);
+        scrollView.draw(canvas);
+        return bitmap;
     }
 
 }

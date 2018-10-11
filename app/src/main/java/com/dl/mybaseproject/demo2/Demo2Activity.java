@@ -1,9 +1,13 @@
 package com.dl.mybaseproject.demo2;
 
+import android.Manifest;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
@@ -25,18 +29,26 @@ import com.bigkoo.convenientbanner.holder.Holder;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.dl.common.adapter.PublicFragmentPagerAdapter;
 import com.dl.common.base.BaseActivity;
+import com.dl.common.uitils.DialogUtil;
+import com.dl.common.uitils.ImgUtil;
 import com.dl.common.uitils.PhoneUtil;
+import com.dl.common.uitils.SystemShareUtil;
 import com.dl.common.uitils.ToastUtil;
 import com.dl.common.widget.GradientScrollView;
 import com.dl.common.widget.PageIndicator;
 import com.dl.mybaseproject.R;
 import com.jaeger.library.StatusBarUtil;
+import com.mylhyl.acp.Acp;
+import com.mylhyl.acp.AcpListener;
+import com.mylhyl.acp.AcpOptions;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class Demo2Activity extends BaseActivity implements GradientScrollView.ScrollViewListener {
 
@@ -90,11 +102,11 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
     }
 
     private void initList() {
-        List<String> data=new ArrayList<>();
+        List<String> data = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            data.add(i+"");
+            data.add(i + "");
         }
-        Demo2ListAdapter demo2ListAdapter=new Demo2ListAdapter(demoList);
+        Demo2ListAdapter demo2ListAdapter = new Demo2ListAdapter(demoList);
         demoList.setAdapter(demo2ListAdapter);
         demo2ListAdapter.setData(data);
         demoList.setNestedScrollingEnabled(false);
@@ -186,6 +198,51 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
     }
 
 
+
+    @OnClick(R.id.rl_right)
+    public void onViewClicked() {
+        Acp.getInstance(this).request(new AcpOptions.Builder()
+                        .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
+                                , Manifest.permission.READ_EXTERNAL_STORAGE)
+                        .build(),
+                new AcpListener() {
+                    @Override
+                    public void onGranted() {
+                        DialogUtil.buildLoading(mActivity);
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    Bitmap bitmap = ImgUtil.getScrollViewBitmap(scrollView);
+                                    String path = ImgUtil.saveImage(mActivity, bitmap, "长图" + System.currentTimeMillis());
+                                    Thread.sleep(1000);
+                                    Message message = Message.obtain();
+                                    message.obj = path;
+                                    handler.sendMessage(message);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).start();
+                    }
+
+                    @Override
+                    public void onDenied(List<String> permissions) {
+                        ToastUtil.warn("权限拒绝,无法分享");
+                    }
+                });
+
+    }
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            String path = (String) msg.obj;
+
+            DialogUtil.dismiss();
+            SystemShareUtil.getInstance().shareSysFile(mActivity, new File(path));
+        }
+    };
 
 
     public class LocalImageHolderView implements Holder<Integer> {

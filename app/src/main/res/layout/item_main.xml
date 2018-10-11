@@ -19,7 +19,7 @@
             android:id="@+id/iv_logo"
             android:layout_width="@dimen/dimen_60"
             android:layout_height="@dimen/dimen_60"
-            android:src="@mipmap/home_login" />
+            android:src="@mipmap/home_demo4" />
 
         <TextView
             android:id="@+id/tv_name"

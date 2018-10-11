@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SmileView">
+        <attr name="smil_radius" format="integer" />
+        <attr name="smil_line_width" format="integer" />
+        <attr name="smil_duration" format="integer" />
+    </declare-styleable>
+
+</resources>
