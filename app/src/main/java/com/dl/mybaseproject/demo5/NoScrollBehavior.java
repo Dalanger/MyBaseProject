@@ -6,8 +6,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.dl.common.uitils.LogUtil;
-
 /**
  * created by dalang at 2018/10/23
  * 自定义behavior 用于控制appbar的滑动
@@ -37,7 +35,6 @@ public class NoScrollBehavior extends AppBarLayout.Behavior{
     @Override
     public boolean onStartNestedScroll(CoordinatorLayout parent, AppBarLayout child, View directTargetChild, View target, int nestedScrollAxes, int type) {
         if (noScroll) {
-            LogUtil.d("执行了吗onStartNestedScroll");
             return false;
         } else {
             return super.onStartNestedScroll(parent, child, directTargetChild, target, nestedScrollAxes, type);

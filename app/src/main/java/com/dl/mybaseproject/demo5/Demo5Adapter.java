@@ -10,6 +10,7 @@ import com.dl.common.animation.BaseAnimation;
 import com.dl.mybaseproject.R;
 
 import cn.bingoogolapple.androidcommon.adapter.BGARecyclerViewAdapter;
+import cn.bingoogolapple.androidcommon.adapter.BGARecyclerViewHolder;
 import cn.bingoogolapple.androidcommon.adapter.BGAViewHolderHelper;
 
 /**
@@ -32,7 +33,11 @@ public class Demo5Adapter extends BGARecyclerViewAdapter<String> {
         helper.setText(R.id.tv_title,model);
         helper.setText(R.id.tv_content,"第"+(position+1)+"条数据");
     }
-
+    @Override
+    public void onViewAttachedToWindow(BGARecyclerViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        addAnimation(holder);
+    }
 
     /**
      * add animation when you want to show time
