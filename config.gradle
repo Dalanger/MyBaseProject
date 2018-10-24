@@ -206,4 +206,9 @@ def viewpager=[:]
 deps.viewpager=viewpager
 viewpager.api='com.bambootang:viewpager3d:1.4'
 
+//viewAnimator
+def anim=[:]
+deps.anim=anim
+anim.api='com.github.florent37:viewanimator:1.1.1'
+
 

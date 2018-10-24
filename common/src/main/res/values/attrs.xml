@@ -60,4 +60,17 @@
         <attr name="unselected_color" format="color|reference"/>
         <attr name="count" format="integer"/>
     </declare-styleable>
+
+
+    <attr name="arcHeight" format="dimension"/>
+
+    <declare-styleable name="ArcView">
+        <attr name="arcHeight"/>
+        <attr name="bgColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="ArcImageView">
+        <attr name="arcHeight"/>
+    </declare-styleable>
+
 </resources>

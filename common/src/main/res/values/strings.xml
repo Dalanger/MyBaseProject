@@ -4,7 +4,7 @@
 
     <string name="register_text">点击注册即代表您已同意</string>
     <string name="register_agreement">《用户注册协议》</string>
-    <string name="company_name">浙江珺墨网络科技有限公司</string>
+    <string name="company_name">杭州珺墨网络科技有限公司</string>
     <string name="empty_code">验证码不能为空</string>
     <string name="empty_mobile">手机号不能为空</string>
     <string name="error_mobile">请输入正确的手机号</string>

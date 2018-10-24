@@ -14,9 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_160">
 
-        <ImageView
+        <com.dl.common.widget.ArcImageView
             android:id="@+id/iv_background"
             android:scaleType="centerCrop"
+            app:arcHeight="@dimen/dimen_20"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

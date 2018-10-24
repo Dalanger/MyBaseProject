@@ -76,7 +76,7 @@ public class Demo4Activity extends BaseActivity implements AppBarLayout.OnOffset
                             }
                         });
                     }
-                }, 4000);
+                }, 2000);
             }
         });
     }

@@ -7,6 +7,7 @@ import android.os.Build;
 import android.support.annotation.CheckResult;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,6 +74,12 @@ public class ToastUtil {
         customCenter(getContext(), "请求失败", Toast.LENGTH_SHORT,  false).show();
     }
 
+
+    public static void snack(View view, String message) {
+        shortSnack(view,message).show();
+    }
+
+
 //*******************************************内需方法********************************************//
 
 
@@ -130,6 +137,8 @@ public class ToastUtil {
 
 
 
+
+
     //******************************************系统 Toast 替代方法***************************************
 
     public static final void setBackground(@NonNull View view, Drawable drawable) {
@@ -146,5 +155,49 @@ public class ToastUtil {
             return context.getResources().getDrawable(id);
     }
 
+
+
+
+
+    /**
+     * 短显示Snack
+     * @param view
+     * @param message
+     * @return
+     */
+    private static Snackbar shortSnack(View view, String message){
+        Snackbar snackbar = Snackbar.make(view,message, Snackbar.LENGTH_SHORT);
+        return snackbar;
+    }
+
+
+    /**
+     * 短显示Snackbar，自定义颜色
+     * @param view
+     * @param message
+     * @param messageColor
+     * @param backgroundColor
+     * @return
+     */
+    public static Snackbar ShortSnackbar(View view, String message, int messageColor, int backgroundColor){
+        Snackbar snackbar = Snackbar.make(view,message, Snackbar.LENGTH_SHORT);
+        setSnackColor(snackbar,messageColor,backgroundColor);
+        return snackbar;
+    }
+
+
+    /**
+     * 设置Snackbar文字和背景颜色
+     * @param snackbar
+     * @param messageColor
+     * @param backgroundColor
+     */
+    private static void setSnackColor(Snackbar snackbar, int messageColor, int backgroundColor) {
+        View view = snackbar.getView();
+        if(view!=null){
+            view.setBackgroundColor(backgroundColor);
+            ((TextView) view.findViewById(R.id.snackbar_text)).setTextColor(messageColor);
+        }
+    }
 
 }

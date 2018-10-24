@@ -17,7 +17,7 @@ public class TabPageIndicatorAdapter extends FragmentStatePagerAdapter {
     private List<String> list_Title;                              //tab名的列表
 
 
-    public TabPageIndicatorAdapter(FragmentManager fm,List<Fragment> fragments,List<Integer> list_id, List<String> list_Title) {
+    public TabPageIndicatorAdapter(FragmentManager fm,List<Fragment> fragments,List<String> list_Title) {
         super(fm);
         list_fragment=fragments;
         this.list_Title=list_Title;

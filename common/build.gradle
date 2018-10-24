@@ -63,5 +63,9 @@ dependencies {
     api deps.circle_img.api
     //线程
     api deps.thread.api
+    //tablayout
+    api deps.xTab.api
+    //viewAnim
+    api deps.anim.api
 
 }

@@ -4,4 +4,6 @@
     <string name="demo3_text2">情景2.一个接口调用时依赖另一个接口的返回值时使用flatMap操作符</string>
     <string name="demo3_text3">情景3.两个接口的数据相互结合才能显示UI时使用ZIP操作符</string>
     <string name="appbar_coali_behavior">com.dl.mybaseproject.demo4.AlipayRefreshBehavior</string>
+    <string name="no_scroll_behavior">com.dl.mybaseproject.demo5.NoScrollBehavior</string>
+    <string name="content_behavior">com.dl.mybaseproject.demo5.FixScrollingFooterBehavior</string>
 </resources>

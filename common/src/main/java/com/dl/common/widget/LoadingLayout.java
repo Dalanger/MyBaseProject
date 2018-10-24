@@ -74,7 +74,7 @@ public class LoadingLayout extends FrameLayout {
     int mEmptyImage;
     CharSequence mEmptyText, mLoadingText;
     int mLoadingImage;
-    private AnimationDrawable animBall;
+    private AnimationDrawable mAnim;
     int mErrorImage;
     CharSequence mErrorText, mRetryText;
     OnClickListener mRetryButtonClickListener = new OnClickListener() {
@@ -195,7 +195,7 @@ public class LoadingLayout extends FrameLayout {
 
     public LoadingLayout setLoadingImage(@DrawableRes int resId) {
         mLoadingImage = resId;
-        imageAnim(mLoadingResId, R.id.pull_to_refresh_ball, mLoadingImage);
+        imageAnim(mLoadingResId, R.id.pull_to_load_anim, mLoadingImage);
         return this;
     }
 
@@ -286,18 +286,18 @@ public class LoadingLayout extends FrameLayout {
         }
         layout(layoutId).setVisibility(VISIBLE);
         if (layoutId == mLoadingResId) {
-            ImageView view = (ImageView) mLayouts.get(mLoadingResId).findViewById(R.id.pull_to_refresh_ball);
+            ImageView view = (ImageView) mLayouts.get(mLoadingResId).findViewById(R.id.pull_to_load_anim);
             if (view != null) {
                 view.setImageResource(mLoadingImage);
-                animBall = (AnimationDrawable) view.getDrawable();
+                mAnim = (AnimationDrawable) view.getDrawable();
             }
-            if (animBall!=null) {
-                animBall.start();
+            if (mAnim !=null) {
+                mAnim.start();
             }
         } else {
-            if (animBall != null) {
-                animBall.stop();
-                animBall = null;
+            if (mAnim != null) {
+                mAnim.stop();
+                mAnim = null;
             }
         }
     }
@@ -382,7 +382,7 @@ public class LoadingLayout extends FrameLayout {
             ImageView view = (ImageView) mLayouts.get(layoutId).findViewById(ctrlId);
             if (view != null) {
                 view.setImageResource(resId);
-                animBall = (AnimationDrawable) view.getDrawable();
+                mAnim = (AnimationDrawable) view.getDrawable();
             }
         }
     }

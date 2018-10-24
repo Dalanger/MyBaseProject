@@ -25,8 +25,8 @@ import com.dl.common.uitils.LogUtil;
  */
 public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
     private static final String TAG = "refresh";
-    private static final float HARD_RATIO = 300;//阻尼系数
-    private static final float MAX_HEIGHT = 1500;//最大高度
+    private static final float HARD_RATIO = 200;//阻尼系数
+    private static final float MAX_HEIGHT = 600;//最大高度
     private static int TARGET_REFESH_HEIGHT = -1;//刷新高度
     private int mTargetViewHeight = -1;
     private View mTargetView;//这里指的使我们的SmileView
@@ -42,6 +42,7 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
 
     private AppBarLayout mAppBarLayout;
     private onRefrehViewActionListener onRefrehViewActionListener;
+    private boolean isScaling;
 
 
     public AlipayRefreshBehavior() {
@@ -87,7 +88,9 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
 
     @Override
     public boolean onStartNestedScroll(CoordinatorLayout parent, AppBarLayout child, View directTargetChild, View target, int nestedScrollAxes, int type) {
+
         if ((target instanceof RecyclerView) || target instanceof NestedScrollView) {//这里判断下拉的对象是否符合条件
+
             isAnimate = true;
             return true;
         } else {
@@ -103,11 +106,13 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
         if (!isRecovering) {
             //返回1时，表示当前target处于非touch的滑动，
             //该bug的引起是因为appbar在滑动时，CoordinatorLayout内的实现NestedScrollingChild2接口的滑动子类还未结束其自身的fling
-            // 所以这里监听子类的非touch时的滑动，然后block掉滑动事件传递给AppBarLayout
-            if (mTargetView != null && ((dy < 0 && child.getBottom() >= mParentHeight )
-                    || (dy > 0 && child.getBottom() > mParentHeight)) && !isPining && type!=1) {
+            // 所以这里监听子类的非touch时的滑动，然后block掉滑动事件传递给AppBarLayout|| (dy > 0 && child.getBottom() > mParentHeight))
+
+            if (mTargetView != null && !isPining && type != 1
+                    && (dy < 0 && child.getBottom() >= mParentHeight)) {
+//                super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type);
                 scale(child, dy, target);//执行下拉展开动画
-                return;
+
             }
         }
     }
@@ -133,7 +138,9 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
 
     @Override
     public boolean onNestedPreFling(CoordinatorLayout coordinatorLayout, AppBarLayout child, View target, float velocityX, float velocityY) {
-        if (velocityY > 300) {//当y速度>300,就秒弹回
+
+
+        if (velocityY > 100) {//当y速度>300,就秒弹回
             isAnimate = false;
         }
         return super.onNestedPreFling(coordinatorLayout, child, target, velocityX, velocityY);
@@ -147,6 +154,9 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
         if (checkPin()) {//检测是否达到刷新临界值
             startPin();//开始刷新动画
         } else {
+//            if (!isScaling) {
+//                recovery(abl);
+//            }
             recovery(abl);
         }
         super.onStopNestedScroll(coordinatorLayout, abl, target, type);
@@ -154,7 +164,7 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
 
     private void scale(AppBarLayout abl, int dy, View target) {
         if (dy < 0 &&!canScale(target)) return;
-
+        isScaling = true;
         mFingerMoveDy += -dy;
         mFingerMoveDy = Math.min(mFingerMoveDy, MAX_HEIGHT);//最大高度
         mLastScale = Math.max(1f, 1f + mFingerMoveDy / HARD_RATIO);//放大倍数
@@ -162,6 +172,7 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
         mViewMoveDy = mLastBottom - mParentHeight;
         setTargetHeight(mViewMoveDy);
         abl.setBottom(mLastBottom);
+        Log.i("dalang","执行了吗"+mFingerMoveDy+"==="+mLastScale+"==="+mLastBottom+"==="+mViewMoveDy+"==="+dy);
 
     }
 
@@ -210,6 +221,8 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
                             public void onAnimationUpdate(ValueAnimator animation) {
                                 setTargetHeight((int) (mViewMoveDy * (1 - animation.getAnimatedFraction())));
                                 abl.setBottom((int) (mLastBottom - mViewMoveDy * animation.getAnimatedFraction()));
+//                                Log.e("dalang",  "setTargetHeight"+(int) (mViewMoveDy * (1 - animation.getAnimatedFraction())));
+//                                Log.e("dalang",  "setBottom"+(int) (mLastBottom - mViewMoveDy * animation.getAnimatedFraction()));
                             }
                         }
                 );
@@ -224,6 +237,7 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
                         isRecovering = false;
                         mViewMoveDy = 0;
                         mFingerMoveDy = 0;
+                        isScaling=false;
 
                     }
 
@@ -232,6 +246,7 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
                         isRecovering = false;
                         mViewMoveDy = 0;
                         mFingerMoveDy = 0;
+                        isScaling=false;
                     }
 
                     @Override
@@ -245,6 +260,7 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
                 isRecovering = false;
                 mViewMoveDy = 0;
                 mFingerMoveDy = 0;
+                isScaling=false;
 
             }
         }
