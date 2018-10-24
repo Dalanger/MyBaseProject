@@ -29,3 +29,10 @@ Demo3<br>
 Demo4<br>
 仿支付宝首页顶部伸缩滑动/中间层下拉刷新<br>
 ![image](https://github.com/Dalanger/MyBaseProject/blob/dalang/img/demo4.gif)
+<br>
+<br>
+Demo5<br>
+TabLayout+ViewPager吸顶及刷新数量动画<br>
+![image](https://github.com/Dalanger/MyBaseProject/blob/dalang/img/demo5.gif)
+
+
