@@ -1,4 +1,4 @@
-<resources>    <!-- Default screen margins, per the Android Design guidelines. -->    <!--px -->    <dimen name="dimen_0">0.0px</dimen>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">    <!-- Default screen margins, per the Android Design guidelines. -->    <!--px -->    <dimen name="dimen_0">0.0px</dimen>
     <dimen name="dimen_0.5">0.75px</dimen>
     <dimen name="dimen_1">1.5px</dimen>
     <dimen name="dimen_2">3.0px</dimen>

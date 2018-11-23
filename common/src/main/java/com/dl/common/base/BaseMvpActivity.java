@@ -13,6 +13,9 @@ import android.view.WindowManager;
 import com.dl.common.R;
 import com.dl.common.bean.MsgEvent;
 import com.dl.common.manager.AppManager;
+import com.dl.common.utils.DialogUtil;
+import com.dl.common.utils.ToastUtil;
+import com.dl.common.widget.LoadingLayout;
 import com.jaeger.library.StatusBarUtil;
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.app.TakePhotoImpl;
@@ -35,7 +38,7 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
  * 结合前面几个项目  对baseActivity进行更完善的封装
  */
 
-public abstract class BaseMvpActivity<V extends IView, P extends IPresenter<V>> extends AppCompatActivity implements MvpCallback<V, P>, BGASwipeBackHelper.Delegate, TakePhoto.TakeResultListener, InvokeListener {
+public abstract class BaseMvpActivity<V extends IView, P extends IPresenter<V>> extends AppCompatActivity implements MvpCallback<V, P>, BGASwipeBackHelper.Delegate, TakePhoto.TakeResultListener, InvokeListener,IView{
 
     public P mPresenter;
     public V mView;
@@ -44,7 +47,8 @@ public abstract class BaseMvpActivity<V extends IView, P extends IPresenter<V>> 
     private static final String TAG = "dalang";
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
-
+    public LoadingLayout mLoadingLayout;
+    public boolean isRefresh;//判断是否处于刷新  刷新时不显示loading状态页
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,7 @@ public abstract class BaseMvpActivity<V extends IView, P extends IPresenter<V>> 
         mActivity = this;
         setContentView(getContentViewId());
         ButterKnife.bind(this);
+        mLoadingLayout = LoadingLayout.wrap(this);
         mView = createView();
         if (mPresenter == null) {
             mPresenter = createPresenter();
@@ -296,6 +301,43 @@ public abstract class BaseMvpActivity<V extends IView, P extends IPresenter<V>> 
 
 
 
+    //----------------------------------------------继承IView实现其方法统一处理------------------------
+    @Override
+    public void showMessage(String msg) {
+        ToastUtil.warn(msg);
+    }
 
+    @Override
+    public void showDialogLoading() {
+        DialogUtil.buildLoading(mActivity);
+    }
+
+    @Override
+    public void dismissDialogLoading() {
+        DialogUtil.dismiss();
+    }
+
+    @Override
+    public void showUILoading() {
+        if (!isRefresh) {
+            mLoadingLayout.showLoading();
+        }
+    }
+
+    @Override
+    public void dismissUILoading() {
+        mLoadingLayout.showContent();
+        isRefresh = false;
+    }
+
+    @Override
+    public void errorUI() {
+        mLoadingLayout.showError();
+    }
+
+    @Override
+    public void errorDialog() {
+        ToastUtil.error();
+    }
 
 }

@@ -17,9 +17,11 @@ public class NetClient {
     private static NetClient mNetClient;
     //不同项目需替换
     private static String BASE_URL="http://cys.m0571.com/api/Test/";
+    private static String BASE_URL_MUSIC="http://motherstorys.m0571.com/mobileapi/public/motherstory/index.php/";
 
     private NetApi mNetApi;
     private final Retrofit retrofit;
+
 
     private NetClient(){
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -34,6 +36,8 @@ public class NetClient {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)
                 .build();
+
+
 
     }
 
@@ -50,4 +54,6 @@ public class NetClient {
         }
         return mNetApi;
     }
+
+
 }

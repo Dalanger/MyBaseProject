@@ -25,7 +25,7 @@ public class Demo5Adapter extends BGARecyclerViewAdapter<String> {
     private Interpolator mInterpolator = new LinearInterpolator();
 
     public Demo5Adapter(RecyclerView recyclerView) {
-        super(recyclerView, R.layout.item_demo5_list);
+        super(recyclerView, R.layout.demo5_item_list);
     }
 
     @Override

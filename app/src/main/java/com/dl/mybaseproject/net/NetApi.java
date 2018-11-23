@@ -34,4 +34,6 @@ public interface NetApi {
     @POST("GetNewsForSingle")
     Observable<TestBean3> getAgreementDetail(@Field("Id")String type_id);
 
+
+
 }

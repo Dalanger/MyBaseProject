@@ -7,13 +7,13 @@ deps.build_version = build_version
 //Gradle
 def gradle = [:]
 deps.gradle = gradle
-gradle.plugin = "com.android.tools.build:gradle:3.1.3"
+gradle.plugin = "com.android.tools.build:gradle:3.2.1"
 
 //Android sdk and tools
-build_version.compileSdkVersion = 27
-build_version.buildVersion = "27.0.3"
+build_version.compileSdkVersion = 28
+build_version.buildVersion = "28.0.3"
 build_version.minSdkVersion = 16
-build_version.targetSdkVersion = 27
+build_version.targetSdkVersion = 28
 build_version.versionCode = 1
 build_version.versionName = "1.0.0"
 build_version.javaVersion = JavaVersion.VERSION_1_8
@@ -21,13 +21,13 @@ build_version.javaVersion = JavaVersion.VERSION_1_8
 //Android support
 def support = [:]
 deps.support = support
-support.appcompat = 'com.android.support:appcompat-v7:27.+'
-support.annotations = 'com.android.support:support-annotations:27.+'
-support.core_ui = 'com.android.support:support-core-ui:27.+'
-support.cardview = 'com.android.support:cardview-v7:27.+'
+support.appcompat = 'com.android.support:appcompat-v7:28.+'
+support.annotations = 'com.android.support:support-annotations:28.+'
+support.core_ui = 'com.android.support:support-core-ui:28.+'
+support.cardview = 'com.android.support:cardview-v7:28.+'
 support.constraint_layout = 'com.android.support.constraint:constraint-layout:1.0.2'
-support.design = 'com.android.support:design:27.+'
-support.v4 = 'com.android.support:support-v4:27.+'
+support.design = 'com.android.support:design:28.+'
+support.v4 = 'com.android.support:support-v4:28.+'
 support.multidex = 'com.android.support:multidex:1.0.3'
 
 //Kotlin
@@ -41,7 +41,7 @@ kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.51"
 def glide = [:]
 deps.glide = glide
 glide.glide = 'com.github.bumptech.glide:glide:3.8.0'
-//glide.compiler = 'com.github.bumptech.glide:compiler:4.4.0'
+
 
 //网络请求框架Retrofit
 def retrofit2 = [:]
@@ -56,6 +56,7 @@ def rxjava2 = [:]
 deps.rxjava2 = rxjava2
 rxjava2.rxjava = "io.reactivex.rxjava2:rxjava:2.1.16"
 rxjava2.rxandroid = "io.reactivex.rxjava2:rxandroid:2.0.2"
+rxjava2.binding='com.jakewharton.rxbinding3:rxbinding:3.0.0-alpha1'
 
 //权限请求
 def permission = [:]
@@ -129,10 +130,11 @@ def cityPicker = [:]
 deps.cityPicker = cityPicker
 cityPicker.api = 'com.contrarywind:Android-PickerView:4.1.6'
 
-//侧滑layout
+//侧滑
 def swipe = [:]
 deps.swipe = swipe
-swipe.api = 'cn.bingoogolapple:bga-swipebacklayout:1.1.9@aar'
+swipe.api = 'cn.bingoogolapple:bga-swipebacklayout:1.1.9@aar'//activity侧滑返回
+swipe.layout = 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'//recyclerview侧滑删除
 
 //万能recyclerview adapter
 def adapter = [:]
@@ -210,5 +212,15 @@ viewpager.api='com.bambootang:viewpager3d:1.4'
 def anim=[:]
 deps.anim=anim
 anim.api='com.github.florent37:viewanimator:1.1.1'
+
+//badgeview消息角标
+def badge=[:]
+deps.badge=badge
+badge.api='q.rorbin:badgeview:1.1.3'
+
+//QQ/微信讨论组头像加载
+def imgLoader=[:]
+deps.imgLoader=imgLoader
+imgLoader.api='com.abbott.mutiimgloader:mutiimgloader:1.0.1'
 
 

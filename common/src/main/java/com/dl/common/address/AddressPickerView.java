@@ -113,12 +113,7 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
         mAdapter = new AddressAdapter();
         mRvList.setAdapter(mAdapter);
         // 初始化默认的本地数据  也提供了方法接收外面数据
-        mRvList.post(new Runnable() {
-            @Override
-            public void run() {
-                initData();
-            }
-        });
+        mRvList.post(() -> initData());
     }
 
 
@@ -155,69 +150,66 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
 
     //原始依赖没有 增加引入先前选项
     public void setPreData(final String prov, final String city, final String district) {
-        mRvList.post(new Runnable() {
-            @Override
-            public void run() {
-                List<AddressBean.AddressItemBean> provBean=mYwpAddressBean.getProvince();
-                List<AddressBean.AddressItemBean> cityBean=new ArrayList<>();
-                List<AddressBean.AddressItemBean> districtBean=new ArrayList<>();
-                mTabLayout.getTabAt(0).setText(prov);
-                mTabLayout.getTabAt(1).setText(city);
-                if (pickerType==0) {
-                    mTabLayout.getTabAt(2).setText(district);
-                }
-
-
-                for (int i = 0; i < provBean.size(); i++) {
-                    if (provBean.get(i).getN().equals(prov)) {
-                        mSelectProvice=provBean.get(i);
-                        mSelectProvicePosition=i;
-                        break;
-                    }
-                }
-                for (AddressBean.AddressItemBean itemBean : mYwpAddressBean.getCity()) {
-                    if (itemBean.getP().equals(mSelectProvice.getI()))
-                        cityBean.add(itemBean);
-                }
-                for (int i = 0; i < cityBean.size(); i++) {
-                    if (cityBean.get(i).getN().equals(city)) {
-                        mSelectCity=cityBean.get(i);
-                        mSelectCityPosition=i;
-                        break;
-                    }
-                }
-
-                if (pickerType == 0) {
-                    for (AddressBean.AddressItemBean itemBean : mYwpAddressBean.getDistrict()) {
-                        if (itemBean.getP().equals(mSelectCity.getI()))
-                            districtBean.add(itemBean);
-                    }
-
-                    for (int i = 0; i < districtBean.size(); i++) {
-                        if (districtBean.get(i).getN().equals(district)) {
-                            mSelectDistrict = districtBean.get(i);
-                            mSelectDistrictPosition = i;
-                            break;
-                        }
-                    }
-                    mTabLayout.getTabAt(2).select();
-                    mRvData.clear();
-                    mRvData.addAll(districtBean);
-                    mAdapter.notifyDataSetChanged();
-                    mRvList.scrollToPosition(mSelectDistrictPosition);
-                } else {
-                    mTabLayout.getTabAt(1).select();
-                    mRvData.clear();
-                    mRvData.addAll(cityBean);
-                    mAdapter.notifyDataSetChanged();
-                    mRvList.scrollToPosition(mSelectCityPosition);
-                }
-
-
-
-                // 确定按钮变亮
-                mTvSure.setTextColor(defaultSureCanClickColor);
+        mRvList.post(() -> {
+            List<AddressBean.AddressItemBean> provBean=mYwpAddressBean.getProvince();
+            List<AddressBean.AddressItemBean> cityBean=new ArrayList<>();
+            List<AddressBean.AddressItemBean> districtBean=new ArrayList<>();
+            mTabLayout.getTabAt(0).setText(prov);
+            mTabLayout.getTabAt(1).setText(city);
+            if (pickerType==0) {
+                mTabLayout.getTabAt(2).setText(district);
             }
+
+
+            for (int i = 0; i < provBean.size(); i++) {
+                if (provBean.get(i).getN().equals(prov)) {
+                    mSelectProvice=provBean.get(i);
+                    mSelectProvicePosition=i;
+                    break;
+                }
+            }
+            for (AddressBean.AddressItemBean itemBean : mYwpAddressBean.getCity()) {
+                if (itemBean.getP().equals(mSelectProvice.getI()))
+                    cityBean.add(itemBean);
+            }
+            for (int i = 0; i < cityBean.size(); i++) {
+                if (cityBean.get(i).getN().equals(city)) {
+                    mSelectCity=cityBean.get(i);
+                    mSelectCityPosition=i;
+                    break;
+                }
+            }
+
+            if (pickerType == 0) {
+                for (AddressBean.AddressItemBean itemBean : mYwpAddressBean.getDistrict()) {
+                    if (itemBean.getP().equals(mSelectCity.getI()))
+                        districtBean.add(itemBean);
+                }
+
+                for (int i = 0; i < districtBean.size(); i++) {
+                    if (districtBean.get(i).getN().equals(district)) {
+                        mSelectDistrict = districtBean.get(i);
+                        mSelectDistrictPosition = i;
+                        break;
+                    }
+                }
+                mTabLayout.getTabAt(2).select();
+                mRvData.clear();
+                mRvData.addAll(districtBean);
+                mAdapter.notifyDataSetChanged();
+                mRvList.scrollToPosition(mSelectDistrictPosition);
+            } else {
+                mTabLayout.getTabAt(1).select();
+                mRvData.clear();
+                mRvData.addAll(cityBean);
+                mAdapter.notifyDataSetChanged();
+                mRvList.scrollToPosition(mSelectCityPosition);
+            }
+
+
+
+            // 确定按钮变亮
+            mTvSure.setTextColor(defaultSureCanClickColor);
         });
 
 
@@ -386,61 +378,58 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
                     break;
             }
             // 设置点击之后的事件
-            holder.mTitle.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // 点击 分类别
-                    switch (tabSelectPosition) {
-                        case 0:
-                            mSelectProvice = mRvData.get(position);
-                            // 清空后面两个的数据
-                            mSelectCity = null;
-                            mSelectDistrict = null;
-                            mSelectCityPosition = 0;
-                            mSelectDistrictPosition = 0;
-                            mTabLayout.getTabAt(1).setText(defaultCity);
-                            if (pickerType==0) {
-                                mTabLayout.getTabAt(2).setText(defaultDistrict);
-                            }
+            holder.mTitle.setOnClickListener(v -> {
+                // 点击 分类别
+                switch (tabSelectPosition) {
+                    case 0:
+                        mSelectProvice = mRvData.get(position);
+                        // 清空后面两个的数据
+                        mSelectCity = null;
+                        mSelectDistrict = null;
+                        mSelectCityPosition = 0;
+                        mSelectDistrictPosition = 0;
+                        mTabLayout.getTabAt(1).setText(defaultCity);
+                        if (pickerType==0) {
+                            mTabLayout.getTabAt(2).setText(defaultDistrict);
+                        }
 
-                            // 设置这个对应的标题
-                            mTabLayout.getTabAt(0).setText(mSelectProvice.getN());
+                        // 设置这个对应的标题
+                        mTabLayout.getTabAt(0).setText(mSelectProvice.getN());
+                        // 跳到下一个选择
+                        mTabLayout.getTabAt(1).select();
+                        // 灰掉确定按钮
+                        mTvSure.setTextColor(defaultSureUnClickColor);
+                        mSelectProvicePosition = position;
+                        break;
+                    case 1:
+                        mSelectCity = mRvData.get(position);
+                        // 清空后面一个的数据
+                        mSelectDistrict = null;
+                        mSelectDistrictPosition = 0;
+                        if (pickerType==0) {
+                            mTabLayout.getTabAt(2).setText(defaultDistrict);
+                        }
+                        // 设置这个对应的标题
+                        mTabLayout.getTabAt(1).setText(mSelectCity.getN());
+                        if (pickerType == 0) {
                             // 跳到下一个选择
-                            mTabLayout.getTabAt(1).select();
+                            mTabLayout.getTabAt(2).select();
                             // 灰掉确定按钮
                             mTvSure.setTextColor(defaultSureUnClickColor);
-                            mSelectProvicePosition = position;
-                            break;
-                        case 1:
-                            mSelectCity = mRvData.get(position);
-                            // 清空后面一个的数据
-                            mSelectDistrict = null;
-                            mSelectDistrictPosition = 0;
-                            if (pickerType==0) {
-                                mTabLayout.getTabAt(2).setText(defaultDistrict);
-                            }
-                            // 设置这个对应的标题
-                            mTabLayout.getTabAt(1).setText(mSelectCity.getN());
-                            if (pickerType == 0) {
-                                // 跳到下一个选择
-                                mTabLayout.getTabAt(2).select();
-                                // 灰掉确定按钮
-                                mTvSure.setTextColor(defaultSureUnClickColor);
-                            } else {
-                                mTvSure.setTextColor(defaultSureCanClickColor);
-                            }
-
-                            mSelectCityPosition = position;
-                            break;
-                        case 2:
-                            mSelectDistrict = mRvData.get(position);
-                            mTabLayout.getTabAt(2).setText(mSelectDistrict.getN());
-                            notifyDataSetChanged();
-                            // 确定按钮变亮
+                        } else {
                             mTvSure.setTextColor(defaultSureCanClickColor);
-                            mSelectDistrictPosition = position;
-                            break;
-                    }
+                        }
+
+                        mSelectCityPosition = position;
+                        break;
+                    case 2:
+                        mSelectDistrict = mRvData.get(position);
+                        mTabLayout.getTabAt(2).setText(mSelectDistrict.getN());
+                        notifyDataSetChanged();
+                        // 确定按钮变亮
+                        mTvSure.setTextColor(defaultSureCanClickColor);
+                        mSelectDistrictPosition = position;
+                        break;
                 }
             });
         }
@@ -477,31 +466,28 @@ public class AddressPickerView extends RelativeLayout implements View.OnClickLis
 //
 //    //外部调用示例
 //
-//    private void showAddressPop() {
+//private void showAddressDialog() {
+//    final BottomSheetDialog dialog = new BottomSheetDialog(this);
 //
-//        final BottomSheetDialog dialog = new BottomSheetDialog(this);
+//    View rootView = LayoutInflater.from(this).inflate(R.layout.pop_address_picker, null, false);
 //
-//        View rootView = LayoutInflater.from(this).inflate(R.layout.pop_address_picker, null, false);
-//
-//        AddressPickerView addressView = rootView.findViewById(R.id.apvAddress);
-//        addressView.setPickerType(1);
-//
-//        addressView.setOnAddressPickerSure(new AddressPickerView.OnAddressPickerSureListener() {
-//
-//            @Override
-//
-//            public void onSureClick(String province, String city, String district,String provinceCode, String cityCode, String districtCode) {
-//
-//
-//                dialog.dismiss();
-//
-//            }
-//
-//        });
-//
-//        dialog.setContentView(rootView);
-//        dialog.show();
+//    AddressPickerView addressView = rootView.findViewById(R.id.apvAddress);
+//    addressView.setPickerType(0);
+//    if (!TextUtils.isEmpty(mProvince)) {
+//        addressView.setPreData(mProvince, mCity, mDistrict);
 //    }
+//
+//    addressView.setOnAddressPickerSure((province, city, district, provinceCode, cityCode, districtCode) -> {
+//        tvAddress.setText(province + "-" + city + "-" + district);
+//        mProvince = province;
+//        mCity = city;
+//        mDistrict = district;
+//        dialog.dismiss();
+//    });
+//
+//    dialog.setContentView(rootView);
+//    dialog.show();
+//}
 
 
 }

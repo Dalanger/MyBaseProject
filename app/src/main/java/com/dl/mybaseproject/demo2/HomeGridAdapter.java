@@ -12,7 +12,7 @@ import cn.bingoogolapple.androidcommon.adapter.BGAViewHolderHelper;
  */
 public class HomeGridAdapter extends BGARecyclerViewAdapter<GridBean> {
     public HomeGridAdapter(RecyclerView recyclerView) {
-        super(recyclerView, R.layout.item_home_grid);
+        super(recyclerView, R.layout.demo2_item_home_grid);
     }
 
     @Override

@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
-import com.dl.common.uitils.LogUtil;
+import com.dl.common.utils.LogUtil;
 
 
 /**

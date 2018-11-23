@@ -13,7 +13,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -23,10 +22,10 @@ import com.dl.common.address.AddressPickerView;
 import com.dl.common.base.BaseActivity;
 import com.dl.common.bean.ShareElementBean;
 import com.dl.common.manager.GlideManager;
-import com.dl.common.uitils.DialogUtil;
-import com.dl.common.uitils.ImgUtil;
-import com.dl.common.uitils.PhoneUtil;
-import com.dl.common.uitils.ToastUtil;
+import com.dl.common.utils.DialogUtil;
+import com.dl.common.utils.ImgUtil;
+import com.dl.common.utils.PhoneUtil;
+import com.dl.common.utils.ToastUtil;
 import com.dl.common.widget.dialog.DialogInput;
 import com.dl.common.widget.dialog.DialogNormal;
 import com.dl.common.widget.dialog.DialogVertical;
@@ -72,14 +71,14 @@ public class Demo1Activity extends BaseActivity {
     private String mCity = "";
     private String mDistrict = "";
 
-    private int mYear=1994;
-    private int mMonth=1;
-    private int mDay=21;
+    private int mYear = 1994;
+    private int mMonth = 1;
+    private int mDay = 21;
 
 
     @Override
     public int getContentViewId() {
-        return R.layout.activity_demo1;
+        return R.layout.demo1_activity;
     }
 
     @Override
@@ -111,17 +110,14 @@ public class Demo1Activity extends BaseActivity {
 
         GlideManager.loadHead(this, url, userIcon);
 
-        executor.callback(threadCallback).execute(new Runnable() {
-            @Override
-            public void run() {
-                bitmap = ImgUtil.getBitmapToBlur(url, 10);
-            }
-        });
+        executor.callback(threadCallback).execute(() ->
+                bitmap = ImgUtil.getBitmapToBlur(url, 10)
+        );
 
     }
 
     @OnClick({R.id.user_icon, R.id.title_back, R.id.tv_upload, R.id.rl_nickname,
-            R.id.rl_sex, R.id.rl_birthday, R.id.rl_address,R.id.btn_logout})
+            R.id.rl_sex, R.id.rl_birthday, R.id.rl_address, R.id.btn_logout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.user_icon:
@@ -151,7 +147,7 @@ public class Demo1Activity extends BaseActivity {
                 showSexDialog();
                 break;
             case R.id.rl_birthday:
-                showDatePickerDialog(mActivity,tvBirthday);
+                showDatePickerDialog(mActivity, tvBirthday);
                 break;
             case R.id.rl_address:
                 showAddressDialog();
@@ -164,18 +160,15 @@ public class Demo1Activity extends BaseActivity {
 
     public void showDatePickerDialog(final Activity activity, final TextView tv) {
         // Calendar calendar = Calendar.getInstance();
-        DatePickerDialog dialog = new DatePickerDialog(activity,new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                mYear=year;
-                mMonth=monthOfYear;
-                mDay=dayOfMonth;
-                String month = String.format("%02d", monthOfYear + 1);
-                String day = String.format("%02d", dayOfMonth);
-                tv.setText(year+"/"+month+"/"+day);
+        DatePickerDialog dialog = new DatePickerDialog(activity, (view, year, monthOfYear, dayOfMonth) -> {
+            mYear = year;
+            mMonth = monthOfYear;
+            mDay = dayOfMonth;
+            String month = String.format("%02d", monthOfYear + 1);
+            String day = String.format("%02d", dayOfMonth);
+            tv.setText(year + "/" + month + "/" + day);
 
-            }
-        }, mYear,mMonth, mDay);
+        }, mYear, mMonth, mDay);
 
 
         dialog.getDatePicker().setMaxDate(new Date().getTime());
@@ -184,13 +177,11 @@ public class Demo1Activity extends BaseActivity {
     }
 
     private void showLogoutDialog() {
-        final DialogNormal dialog=DialogUtil.buildDialogNormal(mActivity,"提示","确定要退出当前账号?");
-        dialog.setSureListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        final DialogNormal dialog = DialogUtil.buildDialogNormal(mActivity, "提示", "确定要退出当前账号?");
+        dialog.setSureListener(v ->
+                dialog.dismiss()
+        );
+
         dialog.show();
     }
 
@@ -202,22 +193,15 @@ public class Demo1Activity extends BaseActivity {
         AddressPickerView addressView = rootView.findViewById(R.id.apvAddress);
         addressView.setPickerType(0);
         if (!TextUtils.isEmpty(mProvince)) {
-            addressView.setPreData(mProvince,mCity,mDistrict);
+            addressView.setPreData(mProvince, mCity, mDistrict);
         }
-        addressView.setOnAddressPickerSure(new AddressPickerView.OnAddressPickerSureListener() {
 
-            @Override
-
-            public void onSureClick(String province, String city, String district, String provinceCode, String cityCode, String districtCode) {
-
-                tvAddress.setText(province + "-" + city + "-" + district);
-                mProvince=province;
-                mCity=city;
-                mDistrict=district;
-                dialog.dismiss();
-
-            }
-
+        addressView.setOnAddressPickerSure((province, city, district, provinceCode, cityCode, districtCode) -> {
+            tvAddress.setText(province + "-" + city + "-" + district);
+            mProvince = province;
+            mCity = city;
+            mDistrict = district;
+            dialog.dismiss();
         });
 
         dialog.setContentView(rootView);
@@ -225,40 +209,32 @@ public class Demo1Activity extends BaseActivity {
     }
 
     private void showSexDialog() {
-        final DialogVertical dialog=DialogUtil.buildDialogVertical(this,"选择性别","男","女");
-        dialog.setOnBtn1Listener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvSex.setText("男");
-                dialog.dismiss();
-            }
+        final DialogVertical dialog = DialogUtil.buildDialogVertical(this, "选择性别", "男", "女");
+        dialog.setOnBtn1Listener(v -> {
+            tvSex.setText("男");
+            dialog.dismiss();
         });
-        dialog.setOnBtn2Listener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvSex.setText("女");
-                dialog.dismiss();
-            }
+        dialog.setOnBtn2Listener(v -> {
+            tvSex.setText("女");
+            dialog.dismiss();
         });
         dialog.show();
     }
 
     private void showNameDialog(String name) {
-        final DialogInput dialog=DialogUtil.buildInputDialog(this,"修改昵称",name);
+        final DialogInput dialog = DialogUtil.buildInputDialog(this, "修改昵称", name);
         if (!TextUtils.isEmpty(name)) {
             dialog.getEditText().setSelection(name.length());
         }
-        dialog.setSureListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!TextUtils.isEmpty(dialog.getContent())) {
-                    tvNickname.setText(dialog.getContent());
-                    dialog.dismiss();
-                } else {
-                    ToastUtil.warn("昵称不能为空");
-                }
 
+        dialog.setSureListener(v -> {
+            if (!TextUtils.isEmpty(dialog.getContent())) {
+                tvNickname.setText(dialog.getContent());
+                dialog.dismiss();
+            } else {
+                ToastUtil.warn("昵称不能为空");
             }
+
         });
         dialog.show();
     }
@@ -293,12 +269,7 @@ public class Demo1Activity extends BaseActivity {
         } else {
             GlideManager.loadHead(this, file, userIcon);
 
-            executor.callback(threadCallback).execute(new Runnable() {
-                @Override
-                public void run() {
-                    bitmap = ImgUtil.bitmapToBlur(BitmapFactory.decodeFile(imgResult), 10);
-                }
-            });
+            executor.callback(threadCallback).execute(() -> bitmap = ImgUtil.bitmapToBlur(BitmapFactory.decodeFile(imgResult), 10));
         }
 
     }

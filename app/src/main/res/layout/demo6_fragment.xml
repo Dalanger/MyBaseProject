@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dl.common.widget.ReboundScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    android:overScrollMode="never">
+
+    <LinearLayout
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:textCursorDrawable="@null"
+            android:id="@+id/et_search"
+            android:textColorHint="@color/gray99"
+            android:hint="搜索"
+            android:textSize="@dimen/dimen_14"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40"
+            android:layout_margin="@dimen/dimen_10"
+            android:background="@drawable/rec_gray_r5"
+            android:gravity="center"/>
+
+        <android.support.v7.widget.RecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/data_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            tools:listitem="@layout/demo6_item_list" />
+
+    </LinearLayout>
+</com.dl.common.widget.ReboundScrollView>

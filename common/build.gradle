@@ -9,9 +9,13 @@ android {
         targetSdkVersion deps.build_version.targetSdkVersion
         versionCode deps.build_version.versionCode
         versionName deps.build_version.versionName
+
     }
 
-
+    compileOptions {
+        sourceCompatibility deps.build_version.javaVersion
+        targetCompatibility deps.build_version.javaVersion
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -22,7 +26,7 @@ android {
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
+
     //support
     api deps.support.appcompat
     api deps.support.v4
@@ -43,6 +47,7 @@ dependencies {
     //rxjava2
     api deps.rxjava2.rxjava
     api deps.rxjava2.rxandroid
+    api deps.rxjava2.binding
     //侧滑layout
     api deps.swipe.api
     //照片选择 预览

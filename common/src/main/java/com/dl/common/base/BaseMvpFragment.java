@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.dl.common.bean.MsgEvent;
+import com.dl.common.utils.DialogUtil;
+import com.dl.common.utils.ToastUtil;
+import com.dl.common.widget.LoadingLayout;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -26,7 +29,7 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
  * Created by dalang on 2018/8/30.
  * 结合之前的项目  对baseFragment进行更完善的封装
  */
-public abstract class BaseMvpFragment<V extends IView,P extends IPresenter<V>> extends Fragment implements MvpCallback<V,P> {
+public abstract class BaseMvpFragment<V extends IView,P extends IPresenter<V>> extends Fragment implements MvpCallback<V,P>,IView {
 
     public Activity mActivity;
     public Context mContext;
@@ -38,7 +41,8 @@ public abstract class BaseMvpFragment<V extends IView,P extends IPresenter<V>> e
     public P mPresenter;
     public V mView;
 
-
+    public LoadingLayout mLoadingLayout;
+    public boolean isRefresh;//判断是否处于刷新  刷新时不显示loading状态页
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,7 @@ public abstract class BaseMvpFragment<V extends IView,P extends IPresenter<V>> e
             mPresenter = createPresenter();
         }
         mPresenter.attachView(mView);
+        mLoadingLayout = LoadingLayout.wrap(this);
         initView();
         //可见，但是并没有加载过
         if (isFragmentVisible && !isFirst) {
@@ -217,6 +222,44 @@ public abstract class BaseMvpFragment<V extends IView,P extends IPresenter<V>> e
         WindowManager.LayoutParams lp = mActivity.getWindow().getAttributes();
         lp.alpha = bgAlpha; //0.0-1.0
         mActivity.getWindow().setAttributes(lp);
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        ToastUtil.warn(msg);
+    }
+
+    @Override
+    public void showDialogLoading() {
+        DialogUtil.buildLoading(mActivity);
+    }
+
+    @Override
+    public void dismissDialogLoading() {
+        DialogUtil.dismiss();
+    }
+
+    @Override
+    public void showUILoading() {
+        if (!isRefresh) {
+            mLoadingLayout.showLoading();
+        }
+    }
+
+    @Override
+    public void dismissUILoading() {
+        mLoadingLayout.showContent();
+        isRefresh = false;
+    }
+
+    @Override
+    public void errorUI() {
+        mLoadingLayout.showError();
+    }
+
+    @Override
+    public void errorDialog() {
+        ToastUtil.error();
     }
 
 }

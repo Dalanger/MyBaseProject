@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dl.common.widget.drawerlayout.MainView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/demo6_title_bg"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/status_bar_fix_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#00000000" />
+
+        <RelativeLayout
+            android:id="@+id/rl_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/iv_head"
+                android:layout_width="@dimen/dimen_45"
+                android:layout_height="@dimen/dimen_45"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/dimen_10"
+                android:src="@mipmap/dl_logo"
+                app:riv_oval="true" />
+
+
+            <TextView
+                android:id="@+id/title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical"
+                android:text="消息"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_18" />
+
+            <ImageView
+                android:id="@+id/iv_plus"
+                android:layout_width="@dimen/dimen_40"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="@dimen/dimen_10"
+                android:src="@mipmap/demo6_icon_plus" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0.5"
+            android:background="@color/grayDD" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:clipChildren="false"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/ll_msg"
+                style="@style/demo6_tab_style">
+
+                <ImageView
+                    android:paddingLeft="@dimen/dimen_8"
+                    android:paddingRight="@dimen/dimen_8"
+                    android:paddingTop="@dimen/dimen_8"
+                    android:paddingBottom="@dimen/dimen_3"
+                    android:id="@+id/iv_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/demo6_bottom_icon_1_check" />
+
+                <TextView
+                    android:id="@+id/tv_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="消息"
+                    android:textColor="@color/blue_light"
+                    android:textSize="@dimen/dimen_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_contact"
+                style="@style/demo6_tab_style">
+
+                <ImageView
+                    android:paddingLeft="@dimen/dimen_8"
+                    android:paddingRight="@dimen/dimen_8"
+                    android:paddingTop="@dimen/dimen_8"
+                    android:paddingBottom="@dimen/dimen_3"
+                    android:id="@+id/iv_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/demo6_bottom_icon_2" />
+
+                <TextView
+                    android:id="@+id/tv_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="联系人"
+                    android:textColor="@color/grayB6"
+                    android:textSize="@dimen/dimen_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_news"
+                style="@style/demo6_tab_style">
+
+                <ImageView
+                    android:paddingLeft="@dimen/dimen_8"
+                    android:paddingRight="@dimen/dimen_8"
+                    android:paddingTop="@dimen/dimen_8"
+                    android:paddingBottom="@dimen/dimen_3"
+                    android:id="@+id/iv_news"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/demo6_bottom_icon_3" />
+
+                <TextView
+                    android:id="@+id/tv_news"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="看点"
+                    android:textColor="@color/grayB6"
+                    android:textSize="@dimen/dimen_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_discover"
+                style="@style/demo6_tab_style">
+
+                <ImageView
+                    android:paddingLeft="@dimen/dimen_8"
+                    android:paddingRight="@dimen/dimen_8"
+                    android:paddingTop="@dimen/dimen_8"
+                    android:paddingBottom="@dimen/dimen_3"
+                    android:id="@+id/iv_discover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/demo6_bottom_icon_4" />
+
+                <TextView
+                    android:id="@+id/tv_discover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="动态"
+                    android:textColor="@color/grayB6"
+                    android:textSize="@dimen/dimen_12" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_bottom"
+        android:layout_below="@+id/ll_top"
+        android:background="@color/white" />
+
+    <View
+        android:visibility="gone"
+        android:id="@+id/shadow_layout"
+        android:background="@color/shadow20"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</com.dl.common.widget.drawerlayout.MainView>

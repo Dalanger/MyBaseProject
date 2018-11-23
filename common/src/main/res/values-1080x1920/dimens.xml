@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">
     <!-- Default screen margins, per the Android Design guidelines. -->
 
     <!--dp -->
@@ -11,7 +11,6 @@
     <dimen name="dimen_5">5dp</dimen>
     <dimen name="dimen_6">6dp</dimen>
     <dimen name="dimen_7">7dp</dimen>
-    <dimen name="dimen_7.5">7.5dp</dimen>
     <dimen name="dimen_8">8dp</dimen>
     <dimen name="dimen_9">9dp</dimen>
     <dimen name="dimen_10">10dp</dimen>

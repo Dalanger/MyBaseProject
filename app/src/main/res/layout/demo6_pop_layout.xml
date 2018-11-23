@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/transparent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:layout_gravity="right"
+        android:src="@mipmap/arrow_up_white"
+        android:layout_width="@dimen/dimen_20"
+        android:layout_height="@dimen/dimen_10" />
+
+    <LinearLayout
+        android:gravity="left"
+        android:layout_width="@dimen/dimen_150"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rec_white_r5"
+        android:orientation="vertical"
+       android:padding="@dimen/dimen_5">
+
+        <TextView
+            style="@style/demo6_text_style"
+            android:text="创建群聊" />
+
+        <TextView
+            style="@style/demo6_text_style"
+            android:text="加好友/群" />
+
+        <TextView
+            style="@style/demo6_text_style"
+            android:text="扫一扫" />
+
+        <TextView
+            style="@style/demo6_text_style"
+            android:text="面对面快传" />
+
+        <TextView
+            style="@style/demo6_text_style"
+            android:text="收付款" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

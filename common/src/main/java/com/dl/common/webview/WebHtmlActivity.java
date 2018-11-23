@@ -41,12 +41,7 @@ public class WebHtmlActivity extends BaseActivity {
     }
 
     private void initActionBar() {
-        findViewById(R.id.title_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSwipeBackHelper.backward();
-            }
-        });
+        findViewById(R.id.title_back).setOnClickListener(v -> mSwipeBackHelper.backward());
 
         titleName = findViewById(R.id.title_name);
         titleName.setText(title);

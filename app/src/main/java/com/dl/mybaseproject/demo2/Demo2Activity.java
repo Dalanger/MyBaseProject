@@ -6,8 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
@@ -26,18 +24,19 @@ import com.bambootang.viewpager3d.ClipView;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
-import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.dl.common.adapter.PublicFragmentPagerAdapter;
 import com.dl.common.base.BaseActivity;
-import com.dl.common.uitils.DialogUtil;
-import com.dl.common.uitils.ImgUtil;
-import com.dl.common.uitils.PhoneUtil;
-import com.dl.common.uitils.SystemShareUtil;
-import com.dl.common.uitils.ToastUtil;
+import com.dl.common.utils.DialogUtil;
+import com.dl.common.utils.ImgUtil;
+import com.dl.common.utils.PhoneUtil;
+import com.dl.common.utils.SystemShareUtil;
+import com.dl.common.utils.ToastUtil;
 import com.dl.common.widget.GradientScrollView;
 import com.dl.common.widget.PageIndicator;
 import com.dl.mybaseproject.R;
 import com.jaeger.library.StatusBarUtil;
+import com.lzh.easythread.Callback;
+import com.lzh.easythread.EasyThread;
 import com.mylhyl.acp.Acp;
 import com.mylhyl.acp.AcpListener;
 import com.mylhyl.acp.AcpOptions;
@@ -84,15 +83,20 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
     private int height;
     private PublicFragmentPagerAdapter indicatorAdapter;
 
+    private EasyThread executor;
+    private ThreadCallback threadCallback;
+    private String path;
+
 
     @Override
     public int getContentViewId() {
-        return R.layout.activity_demo2;
+        return R.layout.demo2_activity;
     }
 
     @Override
     public void init(Bundle savedInstanceState) {
         initView();
+        initThread();
         initViewpager();
         initBanner();
         initViewpager3D();
@@ -110,6 +114,15 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
         demoList.setAdapter(demo2ListAdapter);
         demo2ListAdapter.setData(data);
         demoList.setNestedScrollingEnabled(false);
+
+    }
+
+    private void initThread() {
+        executor = EasyThread.Builder
+                .single()
+                .name("share_path")
+                .build();
+        threadCallback = new ThreadCallback();
     }
 
     private void initViewpager() {
@@ -138,16 +151,10 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
         imgs.add(R.mipmap.banner_3);
         imgs.add(R.mipmap.banner_4);
         banner.setHorizontalScrollBarEnabled(false);
-        banner.setPages(new CBViewHolderCreator<LocalImageHolderView>() {
-            @Override
-            public LocalImageHolderView createHolder() {
-                return new LocalImageHolderView();
-            }
-        }, imgs).setPageIndicator(new int[]{R.drawable.shape_banner_no, R.drawable.shape_banner_yes})
-                .setOnItemClickListener(new OnItemClickListener() {
-                    @Override
-                    public void onItemClick(int position) {
-                    }
+        banner.setPages((CBViewHolderCreator<LocalImageHolderView>) () ->
+                new LocalImageHolderView(), imgs)
+                .setPageIndicator(new int[]{R.drawable.shape_banner_no, R.drawable.shape_banner_yes})
+                .setOnItemClickListener(position -> {
                 })
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL).startTurning(2000);
     }
@@ -158,8 +165,8 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                llTitle.getViewTreeObserver().removeGlobalOnLayoutListener(
-                        this);
+
+                banner.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 height = banner.getHeight() - llTitle.getHeight();
             }
         });
@@ -184,6 +191,7 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
     }
 
     private void initView() {
+
         StatusBarUtil.setTranslucentForImageView(this, 50, null);
         statusBarFix.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, PhoneUtil.getStatusBarHeight(mActivity)));
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) banner.getLayoutParams();
@@ -198,7 +206,6 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
     }
 
 
-
     @OnClick(R.id.rl_right)
     public void onViewClicked() {
         Acp.getInstance(this).request(new AcpOptions.Builder()
@@ -209,21 +216,14 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
                     @Override
                     public void onGranted() {
                         DialogUtil.buildLoading(mActivity);
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
+
+                        executor.callback(threadCallback).execute(() -> {
                                     Bitmap bitmap = ImgUtil.getScrollViewBitmap(scrollView);
-                                    String path = ImgUtil.saveImage(mActivity, bitmap, "长图" + System.currentTimeMillis());
-                                    Thread.sleep(1000);
-                                    Message message = Message.obtain();
-                                    message.obj = path;
-                                    handler.sendMessage(message);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
+                                    path = ImgUtil.saveImage(mActivity, bitmap, "长图" + System.currentTimeMillis());
                                 }
-                            }
-                        }).start();
+                        );
+
+
                     }
 
                     @Override
@@ -234,15 +234,26 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
 
     }
 
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            String path = (String) msg.obj;
 
+    private class ThreadCallback implements Callback {
+
+        @Override
+        public void onError(Thread thread, Throwable t) {
+
+        }
+
+        @Override
+        public void onCompleted(Thread thread) {
+            //监听线程完毕
             DialogUtil.dismiss();
             SystemShareUtil.getInstance().shareSysFile(mActivity, new File(path));
         }
-    };
+
+        @Override
+        public void onStart(Thread thread) {
+
+        }
+    }
 
 
     public class LocalImageHolderView implements Holder<Integer> {
@@ -284,7 +295,7 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
             if (imageViewList.containsKey(position)) {
                 clipView = imageViewList.get(position);
             } else {
-                clipView = (ClipView) View.inflate(mActivity, R.layout.item_image, null);
+                clipView = (ClipView) View.inflate(mActivity, R.layout.demo2_item_image, null);
                 ImageView imageView = (ImageView) clipView.findViewById(R.id.iv_img);
                 TextView tvTitle = clipView.findViewById(R.id.tv_title);
                 imageView.setImageResource(imgIds[position]);
@@ -292,12 +303,9 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
 
             }
             container.addView(clipView);
-            clipView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ToastUtil.normal("点击了" + (position + 1));
-                    fvpPagers.setCurrentItem(position, true);
-                }
+            clipView.setOnClickListener(v -> {
+                ToastUtil.normal("点击了" + (position + 1));
+                fvpPagers.setCurrentItem(position, true);
             });
             return clipView;
         }

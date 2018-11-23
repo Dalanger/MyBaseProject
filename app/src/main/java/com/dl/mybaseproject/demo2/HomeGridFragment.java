@@ -24,7 +24,7 @@ public class HomeGridFragment extends BaseFragment {
 
     @Override
     public int getLayoutRes() {
-        return R.layout.fragment_home_grid;
+        return R.layout.demo2_fragment_home_grid;
     }
 
     /**

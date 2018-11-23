@@ -7,7 +7,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
@@ -20,7 +19,6 @@ import com.dl.mybaseproject.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import uk.co.senab.photoview.PhotoView;
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ShareElementActivity extends AppCompatActivity {
 
@@ -33,7 +31,7 @@ public class ShareElementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_share_element);
+        setContentView(R.layout.demo1_activity_share_element);
         ButterKnife.bind(this);
         GlideManager.loadImage1_1(this,url,mImageView);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -47,19 +45,9 @@ public class ShareElementActivity extends AppCompatActivity {
                     .startEnterAnimator();
         }
 
-        mImageView.setOnViewTapListener(new PhotoViewAttacher.OnViewTapListener() {
-            @Override
-            public void onViewTap(View view, float x, float y) {
-                exit();
-            }
-        });
+        mImageView.setOnViewTapListener((view, x, y) -> exit());
 
-        mImageView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getWindow().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(ShareElementActivity.this,R.color.black)));
-            }
-        },500);
+        mImageView.postDelayed(() -> getWindow().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(ShareElementActivity.this,R.color.black))),500);
     }
 
     private void exit() {

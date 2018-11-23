@@ -34,7 +34,7 @@ public class Demo4Activity extends BaseActivity implements AppBarLayout.OnOffset
 
     @Override
     public int getContentViewId() {
-        return R.layout.activity_demo4;
+        return R.layout.demo4_activity;
     }
 
     @Override
@@ -60,24 +60,13 @@ public class Demo4Activity extends BaseActivity implements AppBarLayout.OnOffset
     private void initListener() {
         final AlipayRefreshBehavior myAppBarLayoutBehavoir = (AlipayRefreshBehavior)
                 ((CoordinatorLayout.LayoutParams) appBar.getLayoutParams()).getBehavior();
-        myAppBarLayoutBehavoir.setOnRefrehViewActionListener(new AlipayRefreshBehavior.onRefrehViewActionListener() {
-            @Override
-            public void onRefresh() {
-                smileView.setDuration(2000);
-                smileView.performAnim();
-                smileView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Demo4Activity.this.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                myAppBarLayoutBehavoir.stopPin();
-                                smileView.cancelAnim();
-                            }
-                        });
-                    }
-                }, 2000);
-            }
+        myAppBarLayoutBehavoir.setOnRefrehViewActionListener(() -> {
+            smileView.setDuration(2000);
+            smileView.performAnim();
+            smileView.postDelayed(() -> Demo4Activity.this.runOnUiThread(() -> {
+                myAppBarLayoutBehavoir.stopPin();
+                smileView.cancelAnim();
+            }), 2000);
         });
     }
 

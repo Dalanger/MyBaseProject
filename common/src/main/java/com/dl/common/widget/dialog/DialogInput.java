@@ -72,14 +72,9 @@ public class DialogInput extends BaseDialog{
         mTvCancel = (TextView) dialog_view.findViewById(R.id.tv_cancel);
         mEtContent = (EditText) dialog_view.findViewById(R.id.et_content);
         mTvTitle = (TextView) dialog_view.findViewById(R.id.tv_title);
-        EditTextManager.setEditTextInhibitInputSpace(mEtContent,8);
+        EditTextManager.setInputRule(mEtContent,8);
         mEtContent.requestFocus();
-        mTvCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        mTvCancel.setOnClickListener(v -> dismiss());
         setContentView(dialog_view);
     }
 }

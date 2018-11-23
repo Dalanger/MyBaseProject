@@ -42,12 +42,11 @@ public class DialogNormal extends BaseDialog {
         mTvCancel = (TextView) dialog_view.findViewById(R.id.tv_cancel);
         mTvContent = (TextView) dialog_view.findViewById(R.id.tv_content);
         mTvTitle = (TextView) dialog_view.findViewById(R.id.tv_title);
-        mTvCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        mTvCancel.setOnClickListener((v) ->
+
+            dismiss()
+        );
+
         setContentView(dialog_view);
     }
 

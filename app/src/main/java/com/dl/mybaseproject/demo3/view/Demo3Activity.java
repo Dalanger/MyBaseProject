@@ -5,8 +5,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.dl.common.base.BaseMvpActivity;
-import com.dl.common.uitils.DialogUtil;
-import com.dl.common.uitils.ToastUtil;
 import com.dl.mybaseproject.R;
 import com.dl.mybaseproject.demo3.bean.TestBean2;
 import com.dl.mybaseproject.demo3.bean.TestBean5;
@@ -42,7 +40,7 @@ public class Demo3Activity extends BaseMvpActivity<IDemo3Contract.View, IDemo3Co
 
     @Override
     public int getContentViewId() {
-        return R.layout.activity_demo3;
+        return R.layout.demo3_activity;
     }
 
     @Override
@@ -50,40 +48,7 @@ public class Demo3Activity extends BaseMvpActivity<IDemo3Contract.View, IDemo3Co
         titleName.setText("RxJava常用操作符");
     }
 
-    @Override
-    public void showMessage(String msg) {
-        ToastUtil.warn(msg);
-    }
 
-    @Override
-    public void showDialogLoading() {
-        DialogUtil.buildLoading(mActivity);
-    }
-
-    @Override
-    public void dismissDialogLoading() {
-        DialogUtil.dismiss();
-    }
-
-    @Override
-    public void showUILoading() {
-
-    }
-
-    @Override
-    public void dismissUILoading() {
-
-    }
-
-    @Override
-    public void errorUI() {
-
-    }
-
-    @Override
-    public void errorDialog() {
-        ToastUtil.error();
-    }
 
     @Override
     public IDemo3Contract.Presenter createPresenter() {

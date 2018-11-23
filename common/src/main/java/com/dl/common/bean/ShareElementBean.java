@@ -7,7 +7,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.ImageView;
 
-import com.dl.common.uitils.PhoneUtil;
+import com.dl.common.utils.PhoneUtil;
 
 /**
  * created by dalang at 2018/9/6

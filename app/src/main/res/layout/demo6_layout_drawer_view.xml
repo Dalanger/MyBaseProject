@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_200">
+
+        <com.dl.common.widget.MoveImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:speed="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/jay" />
+
+        <View
+            android:id="@+id/status_bar_fix_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#00000000" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/status_bar_fix_drawer"
+            android:padding="@dimen/dimen_15">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_25"
+                android:layout_height="@dimen/dimen_25"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/demo6_icon_scan" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:layout_width="@dimen/dimen_45"
+                        android:layout_height="@dimen/dimen_45"
+                        android:src="@mipmap/dl_logo"
+                        app:riv_oval="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="达浪"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dimen_25" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/demo6_crown" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_2"
+                        android:src="@mipmap/demo6_crown" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_2"
+                        android:src="@mipmap/demo6_diamond" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:drawableRight="@mipmap/demo6_icon_edit"
+                    android:drawablePadding="@dimen/dimen_5"
+                    android:text="编辑个性签名"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen_14" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <com.dl.common.widget.ReboundScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_15">
+
+            <TextView
+                style="@style/demo6_text_style"
+                android:text="了解会员特权" />
+
+            <TextView
+                style="@style/demo6_text_style"
+                android:text="QQ钱包" />
+
+            <TextView
+                style="@style/demo6_text_style"
+                android:text="个性装扮" />
+
+            <TextView
+                style="@style/demo6_text_style"
+                android:text="我的收藏" />
+
+            <TextView
+                style="@style/demo6_text_style"
+                android:text="我的相册" />
+
+            <TextView
+                style="@style/demo6_text_style"
+                android:text="我的文件" />
+
+            <TextView
+                style="@style/demo6_text_style"
+                android:text="免流量特权" />
+
+        </LinearLayout>
+    </com.dl.common.widget.ReboundScrollView>
+</LinearLayout>

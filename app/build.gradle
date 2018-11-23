@@ -15,6 +15,7 @@ android {
             //abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
             abiFilters 'armeabi', 'armeabi-v7a'
         }
+     
     }
 
     signingConfigs {
@@ -52,6 +53,13 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+    compileOptions {
+        sourceCompatibility deps.build_version.javaVersion
+        targetCompatibility deps.build_version.javaVersion
+    }
 }
 
 dependencies {
@@ -59,8 +67,10 @@ dependencies {
     api project(':common')
     //黄油刀 虽然common里已经有此依赖 但如果这里不写的话 不起作用 view会报空指针
     api deps.butter.api
-    api 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     annotationProcessor deps.butter.annotationProcessor
     api deps.viewpager.api
     api deps.banner.api
+    api deps.badge.api
+    api deps.imgLoader.api
 }

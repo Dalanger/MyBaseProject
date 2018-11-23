@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.dl.common.base.BaseFragment;
 import com.dl.mybaseproject.R;
-import com.github.florent37.viewanimator.AnimationListener;
 import com.github.florent37.viewanimator.ViewAnimator;
 
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class Demo5ItemFragment extends BaseFragment {
 
     @Override
     public int getLayoutRes() {
-        return R.layout.fragment_demo5;
+        return R.layout.demo5_fragment;
     }
 
 
@@ -66,57 +65,41 @@ public class Demo5ItemFragment extends BaseFragment {
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
                 //延迟2s模拟数据请求
-                frame.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        //模拟数据
-                        for (int i = 0; i < 10; i++) {
-                            data.add("我是第"+mType+"页(加载)");
-                        }
-                        demo5Adapter.notifyDataSetChanged();
-                        pullToRefresh.refreshComplete();
+                frame.postDelayed(() -> {
+                    //模拟数据
+                    for (int i = 0; i < 10; i++) {
+                        data.add("我是第"+mType+"页(加载)");
                     }
+                    demo5Adapter.notifyDataSetChanged();
+                    pullToRefresh.refreshComplete();
                 }, 2000);
             }
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-                frame.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        int num=10;
-                        for (int i = 0; i < num; i++) {
-                            data.add(i,"我是第"+mType+"页(刷新)");
-                        }
-                        demo5Adapter.notifyDataSetChanged();
-                        pullToRefresh.refreshComplete();
-
-                        //顶部刷新条数动画显示
-                        tvRefresh.setVisibility(View.VISIBLE);
-                        tvRefresh.setText("已更新"+num+"条内容");
-                        //借鉴第三方库viewAnimator 动画可自行更改
-                        ViewAnimator
-                                .animate(tvRefresh)
-                                .duration(500)
-                                .zoomIn()
-                                .onStop(new AnimationListener.Stop() {
-                                    @Override
-                                    public void onStop() {
-                                        ViewAnimator
-                                                .animate(tvRefresh)
-                                                .fadeOut()
-                                                .duration(500)
-                                                .onStop(new AnimationListener.Stop() {
-                                                    @Override
-                                                    public void onStop() {
-                                                        tvRefresh.setVisibility(View.GONE);
-                                                    }
-                                                })
-                                                .start();
-                                    }
-                                })
-                                .start();
+                frame.postDelayed(() -> {
+                    int num=10;
+                    for (int i = 0; i < num; i++) {
+                        data.add(i,"我是第"+mType+"页(刷新)");
                     }
+                    demo5Adapter.notifyDataSetChanged();
+                    pullToRefresh.refreshComplete();
+
+                    //顶部刷新条数动画显示
+                    tvRefresh.setVisibility(View.VISIBLE);
+                    tvRefresh.setText("已更新"+num+"条内容");
+                    //借鉴第三方库viewAnimator 动画可自行更改
+                    ViewAnimator
+                            .animate(tvRefresh)
+                            .duration(500)
+                            .zoomIn()
+                            .onStop(() -> ViewAnimator
+                                    .animate(tvRefresh)
+                                    .fadeOut()
+                                    .duration(500)
+                                    .onStop(() -> tvRefresh.setVisibility(View.GONE))
+                                    .start())
+                            .start();
                 }, 2000);
             }
         });

@@ -3,7 +3,7 @@ package com.dl.mybaseproject;
 import android.app.Application;
 import android.content.Context;
 
-import com.dl.common.uitils.ToastUtil;
+import com.dl.common.utils.ToastUtil;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 
@@ -30,4 +30,6 @@ public class MyApp extends Application {
         }
         return mApplication;
     }
+
+
 }

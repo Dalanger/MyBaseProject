@@ -6,5 +6,6 @@ package com.dl.common.constant;
 
 public class Params {
     public final static String SUCCESS_MSG="success";
+    public final static int SUCCESS_CODE=200;
     public final static String ERROR_MSG="error";
 }

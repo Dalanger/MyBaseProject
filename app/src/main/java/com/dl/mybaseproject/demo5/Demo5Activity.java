@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.androidkun.xtablayout.XTabLayout;
 import com.dl.common.adapter.TabPageIndicatorAdapter;
 import com.dl.common.base.BaseActivity;
-import com.dl.common.uitils.PhoneUtil;
+import com.dl.common.utils.PhoneUtil;
 import com.dl.mybaseproject.R;
 import com.jaeger.library.StatusBarUtil;
 
@@ -58,7 +58,7 @@ public class Demo5Activity extends BaseActivity implements AppBarLayout.OnOffset
 
     @Override
     public int getContentViewId() {
-        return R.layout.activity_demo5;
+        return R.layout.demo5_activity;
     }
 
     @Override
@@ -128,6 +128,7 @@ public class Demo5Activity extends BaseActivity implements AppBarLayout.OnOffset
         indicatorAdapter = new TabPageIndicatorAdapter(getSupportFragmentManager(), list_fragment, list_title);
         viewpager.setAdapter(indicatorAdapter);
         tabLayout.setupWithViewPager(viewpager);
+
     }
 
     @Override

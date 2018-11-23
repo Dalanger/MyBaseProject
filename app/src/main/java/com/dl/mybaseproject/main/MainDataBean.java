@@ -34,4 +34,14 @@ public class MainDataBean {
     public void setActivity(Class activity) {
         this.activity = activity;
     }
+
+
+    @Override
+    public String toString() {
+        return "MainDataBean{" +
+                "imgRes=" + imgRes +
+                ", content='" + content + '\'' +
+                ", activity=" + activity +
+                '}';
+    }
 }

@@ -16,7 +16,6 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
@@ -44,12 +43,7 @@ public class Demo3Model extends BaseModel implements IDemo3Contract.Model {
     public void getFlatMapData(String type,Observer<TestBean3> observer) {
         final NetApi netApi= NetClient.getInstance().getNetApi();
         netApi.getAgreementList(type)
-                .flatMap(new Function<TestBean4, ObservableSource<TestBean3>>() {
-                    @Override
-                    public ObservableSource<TestBean3> apply(TestBean4 testBean4)  throws Exception {
-                        return netApi.getAgreementDetail(testBean4.getDate().get(0).getId());
-                    }
-                }).subscribeOn(Schedulers.io())
+                .flatMap((Function<TestBean4, ObservableSource<TestBean3>>) testBean4 -> netApi.getAgreementDetail(testBean4.getDate().get(0).getId())).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
     }
@@ -57,18 +51,15 @@ public class Demo3Model extends BaseModel implements IDemo3Contract.Model {
     @Override
     public void getZipData(Observer<List<TestBean5>> observer) {
         NetApi netApi= NetClient.getInstance().getNetApi();
-        Observable.zip(netApi.getAgreementList("员工须知"), netApi.getGoodsType(), new BiFunction<TestBean4, TestBean2, List<TestBean5>>() {
-            @Override
-            public List<TestBean5> apply(TestBean4 testBean4, TestBean2 testBean2) throws Exception {
-                //结合数据为一体
-                List<TestBean5> list=new ArrayList<>();
-                List<TestBean4.DateBean> data1=testBean4.getDate();
-                List<TestBean2.DateBean> data2=testBean2.getDate();
-                for (int i = 0; i < data1.size(); i++) {
-                    list.add(new TestBean5(data2.get(i).getName(),data1.get(i).getTitle(),data1.get(i).getAddtime()));
-                }
-                return list;
+        Observable.zip(netApi.getAgreementList("员工须知"), netApi.getGoodsType(), (testBean4, testBean2) -> {
+            //结合数据为一体
+            List<TestBean5> list=new ArrayList<>();
+            List<TestBean4.DateBean> data1=testBean4.getDate();
+            List<TestBean2.DateBean> data2=testBean2.getDate();
+            for (int i = 0; i < data1.size(); i++) {
+                list.add(new TestBean5(data2.get(i).getName(),data1.get(i).getTitle(),data1.get(i).getAddtime()));
             }
+            return list;
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);

@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.dl.common.R;
-import com.dl.common.uitils.PhoneUtil;
+import com.dl.common.utils.PhoneUtil;
 
 
 public class PageIndicator extends View {
@@ -73,6 +73,7 @@ public class PageIndicator extends View {
 
     public void setSelection(int position){
         selection = position;
+        requestLayout();
         invalidate();
     }
 

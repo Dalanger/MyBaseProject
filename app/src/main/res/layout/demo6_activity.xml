@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".demo6.Demo6Activity">
+
+    <com.dl.common.widget.drawerlayout.DrawerMenu
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:drawerPercent="0.8">
+
+        <include layout="@layout/demo6_layout_drawer_view" />
+
+        <include layout="@layout/demo6_layout_main_view" />
+
+
+    </com.dl.common.widget.drawerlayout.DrawerMenu>
+
+</LinearLayout>

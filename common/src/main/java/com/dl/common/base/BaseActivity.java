@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import com.dl.common.R;
 import com.dl.common.bean.MsgEvent;
 import com.dl.common.manager.AppManager;
+import com.dl.common.widget.LoadingLayout;
 import com.jaeger.library.StatusBarUtil;
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.app.TakePhotoImpl;
@@ -43,6 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BGASwip
     private static final String TAG = "dalang";
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
+    public LoadingLayout mLoadingLayout;
 
 
     @Override
@@ -53,6 +55,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BGASwip
         if (this.getClass().getName().equals("com.dl.mybaseproject.demo1.Demo1Activity")
                 ||this.getClass().getName().equals("com.dl.mybaseproject.demo2.Demo2Activity")
                 ||this.getClass().getName().equals("com.dl.mybaseproject.demo5.Demo5Activity")
+                ||this.getClass().getName().equals("com.dl.mybaseproject.demo6.Demo6Activity")
 
                 ) {
 
@@ -65,9 +68,11 @@ public abstract class BaseActivity extends AppCompatActivity implements  BGASwip
         mActivity = this;
         setContentView(getContentViewId());
         ButterKnife.bind(this);
-
+        mLoadingLayout = LoadingLayout.wrap(this);
         init(savedInstanceState);
     }
+
+
 
 
     @Override

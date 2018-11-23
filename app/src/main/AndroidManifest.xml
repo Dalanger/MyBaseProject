@@ -16,6 +16,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!-- 全面屏适配 -->
+        <meta-data
+            android:name="android:max_aspect"
+            android:value="2.1" />
+
         <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,29 +34,25 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".demo1.Demo1Activity"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent" />
         <activity
             android:name=".demo1.ShareElementActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent" />
         <activity
             android:name=".demo2.Demo2Activity"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent" />
         <activity
             android:name=".demo3.view.Demo3Activity"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent" />
         <activity
             android:name=".demo4.Demo4Activity"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent" />
         <activity
             android:name=".demo5.Demo5Activity"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent" />
-        <activity android:name=".demo6.Demo6Activity"></activity>
+
+
+        <activity android:name=".demo6.Demo6Activity" />
     </application>
 
 </manifest>

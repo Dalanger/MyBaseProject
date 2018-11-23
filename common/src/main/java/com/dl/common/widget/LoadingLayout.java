@@ -48,6 +48,8 @@ public class LoadingLayout extends FrameLayout {
         return wrap(((ViewGroup) activity.findViewById(android.R.id.content)).getChildAt(0));
     }
 
+
+
     public static LoadingLayout wrap(Fragment fragment) {
         return wrap(fragment.getView());
     }
