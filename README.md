@@ -34,5 +34,14 @@ Demo4<br>
 Demo5<br>
 TabLayout+ViewPager吸顶及刷新数量动画<br>
 ![image](https://github.com/Dalanger/MyBaseProject/blob/dalang/img/demo5.gif)
-
+<br>
+<br>
+Demo6<br>
+仿QQ首页<br>
+1.首页左侧drawerLaout<br>
+2.Ritem侧滑删除<br>
+3.可浮动的ImageView<br>
+4.消息角标自用拖拽<br>
+5.讨论组头像展示<br>
+![image](https://github.com/Dalanger/MyBaseProject/blob/dalang/img/demo6.gif)
 
