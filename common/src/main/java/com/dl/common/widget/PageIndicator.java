@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.dl.common.R;
-import com.dl.common.utils.PhoneUtil;
+import com.dl.common.utils.DisplayUtil;
 
 
 public class PageIndicator extends View {
@@ -59,10 +59,10 @@ public class PageIndicator extends View {
         mUnSelectedPaint.setAntiAlias(true);
         mUnSelectedPaint.setStyle(Paint.Style.FILL);
 
-        selectedW = PhoneUtil.dp2px(context,20f);
-        unSelectedW = PhoneUtil.dp2px(context,10f);
-        height = PhoneUtil.dp2px(context,2f);
-        gapW = PhoneUtil.dp2px(context,5f);
+        selectedW = DisplayUtil.dp2px(context,20f);
+        unSelectedW = DisplayUtil.dp2px(context,10f);
+        height = DisplayUtil.dp2px(context,2f);
+        gapW = DisplayUtil.dp2px(context,5f);
     }
 
     public void setCount(int count){

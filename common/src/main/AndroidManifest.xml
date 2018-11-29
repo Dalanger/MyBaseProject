@@ -10,6 +10,7 @@
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <!-- 个推3.0电子围栏功能所需权限 -->
@@ -36,10 +37,10 @@
 
     <application>
         <activity
-            android:name=".webview.WebHtmlActivity"
+            android:name=".activity.WebHtmlActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent" />
-
+        <activity android:name=".activity.BigPhotoActivity"></activity>
     </application>
 
 </manifest>

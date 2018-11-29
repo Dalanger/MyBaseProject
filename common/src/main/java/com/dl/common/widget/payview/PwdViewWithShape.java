@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.dl.common.R;
-import com.dl.common.utils.PhoneUtil;
+import com.dl.common.utils.DisplayUtil;
 
 /**
  * created by dalang at 2018/10/25
@@ -66,10 +66,10 @@ public class PwdViewWithShape extends LinearLayout implements TextWatcher, View.
         }else{
             shape = Shape.RECT;
         }
-        radius = ta.getDimensionPixelSize(R.styleable.PasswordViewShape_mRadius, PhoneUtil.dp2px(context,25f));
-        rectW = ta.getDimensionPixelSize(R.styleable.PasswordViewShape_rectW, PhoneUtil.dp2px(context,50f));
-        rectH = ta.getDimensionPixelSize(R.styleable.PasswordViewShape_rectH, PhoneUtil.dp2px(context,50f));
-        editTextSize = ta.getDimensionPixelSize(R.styleable.PasswordViewShape_edit_text_size, PhoneUtil.dp2px(context,12f));
+        radius = ta.getDimensionPixelSize(R.styleable.PasswordViewShape_mRadius, DisplayUtil.dp2px(context,25f));
+        rectW = ta.getDimensionPixelSize(R.styleable.PasswordViewShape_rectW, DisplayUtil.dp2px(context,50f));
+        rectH = ta.getDimensionPixelSize(R.styleable.PasswordViewShape_rectH, DisplayUtil.dp2px(context,50f));
+        editTextSize = ta.getDimensionPixelSize(R.styleable.PasswordViewShape_edit_text_size, DisplayUtil.dp2px(context,12f));
         editTextColor = ta.getColor(R.styleable.PasswordViewShape_edit_text_color, ContextCompat.getColor(context,R.color.black33));
         bgDrawable = ta.getResourceId(R.styleable.PasswordViewShape_uncheck_drawable, R.drawable.default_uncheck_pay_view_bg);
         cursorDrawable = ta.getResourceId(R.styleable.PasswordViewShape_checked_drawable, R.drawable.default_checked_pay_view_bg);

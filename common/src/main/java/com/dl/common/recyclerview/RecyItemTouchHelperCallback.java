@@ -11,6 +11,8 @@ import cn.bingoogolapple.androidcommon.adapter.BGARecyclerViewAdapter;
 
 /**
  * created by dalang at 2018/11/15
+ *
+ * 仅拖拽排序 不含微信拖拽删除
  */
 public class RecyItemTouchHelperCallback extends ItemTouchHelper.Callback {
     RecyclerView.Adapter mAdapter;

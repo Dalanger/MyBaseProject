@@ -55,6 +55,7 @@ dependencies {
     api deps.photo.preview
     //黄油刀
     api deps.butter.api
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     annotationProcessor deps.butter.annotationProcessor
     //状态栏
     api deps.statusBar.api

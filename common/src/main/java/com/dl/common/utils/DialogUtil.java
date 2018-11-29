@@ -114,7 +114,7 @@ public class DialogUtil {
      *
      * @param context
      * @param takePhoto
-     * @param type    type=0 不裁剪  1 1:1裁剪 2 4:3裁剪 3 16:9裁剪
+     * @param type      type=0 不裁剪  1 1:1裁剪 2 4:3裁剪 3 16:9裁剪
      */
     public static void uploadPhoto(Context context, final TakePhoto takePhoto, final int type) {
 
@@ -131,7 +131,7 @@ public class DialogUtil {
         configCompress(takePhoto);
         configTakePhotoOption(takePhoto);
         cameraDialog.setOnBtn1Listener(v -> {
-            if (type!=0) {
+            if (type != 0) {
                 takePhoto.onPickFromCaptureWithCrop(imageUri, getCropOptions(type));
             } else {
                 takePhoto.onPickFromCapture(imageUri);
@@ -140,7 +140,7 @@ public class DialogUtil {
             cameraDialog.dismiss();
         });
         cameraDialog.setOnBtn2Listener(v -> {
-            if (type!=0) {
+            if (type != 0) {
                 takePhoto.onPickFromGalleryWithCrop(imageUri, getCropOptions(type));
             } else {
                 takePhoto.onPickFromGallery();
@@ -152,7 +152,7 @@ public class DialogUtil {
     }
 
 
-    public static void uploadMultiplePhoto(Context context, final TakePhoto takePhoto, final int limit, final int type) {
+    public static void uploadMultiplePhoto(Context context, final TakePhoto takePhoto, final int limit) {
 
         final File file = new File(FileUtil.IMG_FILE_PATH + "/" + System.currentTimeMillis() + FileUtil.JPG_SUFFIX);
         final DialogVertical cameraDialog = buildDialogVertical(context, "选择照片", "拍照", "从手机相册选择");
@@ -162,13 +162,12 @@ public class DialogUtil {
         final Uri imageUri = Uri.fromFile(file);
         configCompress(takePhoto);
         configTakePhotoOption(takePhoto);
+
         cameraDialog.setOnBtn1Listener(v -> {
 
-            if (type!=0) {
-                takePhoto.onPickFromCaptureWithCrop(imageUri, getCropOptions(type));
-            } else {
-                takePhoto.onPickFromCapture(imageUri);
-            }
+
+            takePhoto.onPickFromCapture(imageUri);
+
             cameraDialog.dismiss();
         });
         cameraDialog.setOnBtn2Listener(v -> {

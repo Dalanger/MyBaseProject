@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.dl.common.base.BaseActivity;
 import com.dl.common.utils.LogUtil;
-import com.dl.common.utils.PhoneUtil;
+import com.dl.common.utils.DisplayUtil;
 import com.dl.common.utils.ToastUtil;
 import com.dl.common.widget.drawerlayout.DrawerMenu;
 import com.dl.mybaseproject.R;
@@ -143,10 +143,10 @@ public class Demo6Activity extends BaseActivity {
 
     private void initStatus() {
         StatusBarUtil.setTranslucentForImageView(this, 100, null);
-        statusBarFixMain.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, PhoneUtil.getStatusBarHeight(mActivity)));
-        statusBarFixDrawer.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, PhoneUtil.getStatusBarHeight(mActivity)));
+        statusBarFixMain.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayUtil.getStatusBarHeight(mActivity)));
+        statusBarFixDrawer.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayUtil.getStatusBarHeight(mActivity)));
         //此处0.8是由xml中设置而来 指drawer宽度占屏幕的百分比
-        drawerLayout.setLayoutParams(new FrameLayout.LayoutParams((int) (PhoneUtil.getScreenWidth(mActivity) * 0.8), ViewGroup.LayoutParams.MATCH_PARENT));
+        drawerLayout.setLayoutParams(new FrameLayout.LayoutParams((int) (DisplayUtil.getScreenWidth(mActivity) * 0.8), ViewGroup.LayoutParams.MATCH_PARENT));
     }
 
 
@@ -281,7 +281,7 @@ public class Demo6Activity extends BaseActivity {
         popWnd.setOutsideTouchable(false);
         popWnd.setContentView(contentView);
         view.getLocationOnScreen(location);
-        popWnd.showAtLocation(view, Gravity.NO_GRAVITY, (location[0] + view.getWidth() / 2) - popupWidth + PhoneUtil.dp2px(mActivity, 15), location[1] + view.getHeight());
+        popWnd.showAtLocation(view, Gravity.NO_GRAVITY, (location[0] + view.getWidth() / 2) - popupWidth + DisplayUtil.dp2px(mActivity, 15), location[1] + view.getHeight());
 
         shadowLayout.setVisibility(View.VISIBLE);
         popWnd.setOnDismissListener(() -> {

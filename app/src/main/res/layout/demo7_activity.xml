@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    tools:context=".demo7.Demo7Activity">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_45">
+
+        <ImageView
+            android:id="@+id/title_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/dimen_18"
+            android:paddingRight="@dimen/dimen_18"
+            android:src="@mipmap/arrow_back_black" />
+
+
+        <TextView
+            android:id="@+id/title_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dimen_16"
+            android:paddingRight="@dimen/dimen_16"
+            android:text="发表"
+            android:textColor="@color/green_send"
+            android:textSize="@dimen/dimen_14" />
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_title"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+
+            <com.dl.common.widget.EditTextWithScrollView
+                android:paddingRight="@dimen/dimen_20"
+                android:paddingLeft="@dimen/dimen_20"
+                android:id="@+id/et_content"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_100"
+                android:background="@null"
+                android:focusable="true"
+                android:gravity="start"
+                android:hint="这一刻的想法..."
+                android:textColorHint="@color/grayCC"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/dimen_18" />
+
+            <!--此处200随意写的 只是为了布局看得清楚结构-->
+            <LinearLayout
+                android:id="@+id/ll_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_200"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dimen_20"
+                android:paddingRight="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_20">
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_1"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_marginBottom="@dimen/dimen_10"
+                    android:background="@color/grayF5" />
+
+                <TextView
+                    style="@style/demo6_text_style"
+                    android:text="所在位置" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_1"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_marginBottom="@dimen/dimen_10"
+                    android:background="@color/grayF5" />
+
+                <TextView
+                    style="@style/demo6_text_style"
+                    android:text="谁可以看" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_1"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_marginBottom="@dimen/dimen_10"
+                    android:background="@color/grayF5" />
+
+                <TextView
+                    style="@style/demo6_text_style"
+                    android:text="提醒谁看" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_1"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_marginBottom="@dimen/dimen_10"
+                    android:background="@color/grayF5" />
+
+
+                <ImageView
+                    android:id="@+id/iv_qzone"
+                    android:layout_width="@dimen/dimen_30"
+                    android:layout_height="@dimen/dimen_30"
+                    android:adjustViewBounds="true"
+                    android:src="@mipmap/demo7_qzone" />
+
+            </LinearLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:layout_below="@+id/et_content"
+                android:paddingTop="@dimen/dimen_20"
+                android:paddingLeft="@dimen/dimen_20"
+                android:paddingRight="@dimen/dimen_20"
+                app:layoutManager="android.support.v7.widget.StaggeredGridLayoutManager"
+                app:spanCount="3" />
+
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/tv_delete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/holo_red_light"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+</RelativeLayout>

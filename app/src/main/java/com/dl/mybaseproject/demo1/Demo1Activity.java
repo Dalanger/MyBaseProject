@@ -24,7 +24,7 @@ import com.dl.common.bean.ShareElementBean;
 import com.dl.common.manager.GlideManager;
 import com.dl.common.utils.DialogUtil;
 import com.dl.common.utils.ImgUtil;
-import com.dl.common.utils.PhoneUtil;
+import com.dl.common.utils.DisplayUtil;
 import com.dl.common.utils.ToastUtil;
 import com.dl.common.widget.dialog.DialogInput;
 import com.dl.common.widget.dialog.DialogNormal;
@@ -99,12 +99,12 @@ public class Demo1Activity extends BaseActivity {
 
     private void initStatus() {
         StatusBarUtil.setTranslucentForImageView(this, 50, null);
-        statusBarFix.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, PhoneUtil.getStatusBarHeight(mActivity)));
+        statusBarFix.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayUtil.getStatusBarHeight(mActivity)));
     }
 
     private void initImg() {
         ViewGroup.LayoutParams layoutParams = rlImg.getLayoutParams();
-        layoutParams.height = PhoneUtil.getScreenWidth(mActivity) * 9 / 16;
+        layoutParams.height = DisplayUtil.getScreenWidth(mActivity) * 9 / 16;
         rlImg.setLayoutParams(layoutParams);
 
 

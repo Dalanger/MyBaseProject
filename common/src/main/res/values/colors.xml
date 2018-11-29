@@ -46,11 +46,8 @@
     <color name="shadow80">#80808080</color>
     <color name="shadow10">#10000000</color>
     <color name="shadow22">#22000000</color>
-    <color name="red_light">#ff90ae</color>
-
-    <color name="pure_red">#ff0000</color>
+    <color name="pure_red">#ffff4444</color>
     <color name="grayF8">#F8F8F8</color>
-    <color name="green_light">#8EE3CE</color>
     <color name="light_grey">#d9d9d9</color>
     <color name="green_send">#1dab1b</color>
     <color name="green_send_stroke">#368836</color>

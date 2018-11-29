@@ -28,7 +28,7 @@ import com.dl.common.adapter.PublicFragmentPagerAdapter;
 import com.dl.common.base.BaseActivity;
 import com.dl.common.utils.DialogUtil;
 import com.dl.common.utils.ImgUtil;
-import com.dl.common.utils.PhoneUtil;
+import com.dl.common.utils.DisplayUtil;
 import com.dl.common.utils.SystemShareUtil;
 import com.dl.common.utils.ToastUtil;
 import com.dl.common.widget.GradientScrollView;
@@ -193,9 +193,9 @@ public class Demo2Activity extends BaseActivity implements GradientScrollView.Sc
     private void initView() {
 
         StatusBarUtil.setTranslucentForImageView(this, 50, null);
-        statusBarFix.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, PhoneUtil.getStatusBarHeight(mActivity)));
+        statusBarFix.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayUtil.getStatusBarHeight(mActivity)));
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) banner.getLayoutParams();
-        params.height = PhoneUtil.getScreenWidth(this) * 10 / 23;
+        params.height = DisplayUtil.getScreenWidth(this) * 10 / 23;
         banner.setLayoutParams(params);
     }
 

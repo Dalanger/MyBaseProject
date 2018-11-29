@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".webview.WebHtmlActivity">
+    tools:context=".activity.WebHtmlActivity">
 
     <include layout="@layout/action_bar_layout"/>
     <ProgressBar

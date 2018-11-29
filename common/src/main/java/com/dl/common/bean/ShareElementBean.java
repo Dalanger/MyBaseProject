@@ -7,7 +7,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.ImageView;
 
-import com.dl.common.utils.PhoneUtil;
+import com.dl.common.utils.DisplayUtil;
 
 /**
  * created by dalang at 2018/9/6
@@ -119,7 +119,7 @@ public class ShareElementBean implements Parcelable{
         mCenterOffsetX = (int) (mOriginalLocation[0] + mOriginalValues[Matrix.MTRANS_X] + mOriginalViewWidth / 2
                 - mTargetLocation[0] - mTargetValues[Matrix.MTRANS_X] - mTargetViewWidth / 2);
         mCenterOffsetY = (int) (mOriginalLocation[1] + mOriginalValues[Matrix.MTRANS_Y] + mOriginalViewHeight / 2
-                - PhoneUtil.getStatusBarHeight(context) - mTargetLocation[1] - mTargetValues[Matrix.MTRANS_Y] - mTargetViewHeight / 2);
+                - DisplayUtil.getStatusBarHeight(context) - mTargetLocation[1] - mTargetValues[Matrix.MTRANS_Y] - mTargetViewHeight / 2);
     }
 
     public int getCenterOffsetX() {

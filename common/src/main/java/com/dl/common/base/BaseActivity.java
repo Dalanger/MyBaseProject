@@ -56,6 +56,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BGASwip
                 ||this.getClass().getName().equals("com.dl.mybaseproject.demo2.Demo2Activity")
                 ||this.getClass().getName().equals("com.dl.mybaseproject.demo5.Demo5Activity")
                 ||this.getClass().getName().equals("com.dl.mybaseproject.demo6.Demo6Activity")
+                ||this.getClass().getName().equals("com.dl.mybaseproject.demo7.Demo7Activity")
 
                 ) {
 

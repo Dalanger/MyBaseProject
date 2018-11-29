@@ -202,7 +202,6 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
         } else {
             height = view.getHeight();
         }
-        Log.e("dalang", height + "");
         return height;
     }
 
@@ -339,9 +338,5 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
         void onRefresh();
 
     }
-
-
-
-
 
 }

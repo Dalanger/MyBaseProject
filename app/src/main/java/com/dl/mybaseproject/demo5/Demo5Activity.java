@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.androidkun.xtablayout.XTabLayout;
 import com.dl.common.adapter.TabPageIndicatorAdapter;
 import com.dl.common.base.BaseActivity;
-import com.dl.common.utils.PhoneUtil;
+import com.dl.common.utils.DisplayUtil;
 import com.dl.mybaseproject.R;
 import com.jaeger.library.StatusBarUtil;
 
@@ -74,7 +74,7 @@ public class Demo5Activity extends BaseActivity implements AppBarLayout.OnOffset
         StatusBarUtil.setTranslucentForImageView(mActivity, 50, null);
         //防止toolbar顶入状态栏
         CollapsingToolbarLayout.LayoutParams lp2 = (CollapsingToolbarLayout.LayoutParams) toolbar.getLayoutParams();
-        lp2.topMargin = PhoneUtil.getStatusBarHeight(mActivity);
+        lp2.topMargin = DisplayUtil.getStatusBarHeight(mActivity);
         toolbar.setLayoutParams(lp2);
 
         myAppBarLayoutBehavoir = (NoScrollBehavior)
