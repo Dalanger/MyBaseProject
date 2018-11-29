@@ -44,4 +44,13 @@ Demo6<br>
 4.消息角标自用拖拽<br>
 5.讨论组头像展示<br>
 ![image](https://github.com/Dalanger/MyBaseProject/blob/dalang/img/demo6.gif)
+<br>
+<br>
+Demo7<br>
+仿微信发布朋友圈<br>
+1.多图上传<br>
+2.拖拽排序及删除<br>
+3.editText与scrollView滚动冲突<br>
+4.图片预览缩放<br>
+![image](https://github.com/Dalanger/MyBaseProject/blob/dalang/img/demo7.gif)
 
