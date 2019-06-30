@@ -25,6 +25,7 @@ public class WebHtmlActivity extends BaseActivity {
     private TextView titleName;
     private ProgressBar progressBar;
     private WebView webView;
+    private int isAgreement;//是否是协议文本
 
     @Override
     public int getContentViewId() {
@@ -36,6 +37,7 @@ public class WebHtmlActivity extends BaseActivity {
         type = getIntent().getIntExtra("type", 0);
         data = getIntent().getStringExtra("data");
         title=getIntent().getStringExtra("title");
+        isAgreement=getIntent().getIntExtra("isAgreement",0);
         initActionBar();
         initWebView();
     }
@@ -50,15 +52,25 @@ public class WebHtmlActivity extends BaseActivity {
     private void initWebView() {
         webView = findViewById(R.id.webView);
         progressBar = findViewById(R.id.progress);
+        //自适应屏幕
+        if (isAgreement!=0) {
+            webView.getSettings().setUseWideViewPort(true);//设置该属性  字体大小样式会改变 一般用于内容比较多协议等的情况
+        }
+
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.setHorizontalScrollBarEnabled(false);
         webView.setVerticalScrollBarEnabled(false);
+        //允许手势缩放
+        webView.getSettings().setSupportZoom(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setDefaultTextEncodingName("UTF-8");
         switch (type) {
             case 0:
                 String str = "<style>img{max-width:100%;height:auto;}</style>";
-                webView.loadData(str+data, "text/html", "UTF-8");
+                webView.loadDataWithBaseURL(null,str+data, "text/html", "UTF-8",null);
                 break;
             case 1:
                 webView.loadUrl(data);

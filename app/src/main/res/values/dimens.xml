@@ -3,4 +3,6 @@
 
     <dimen name="recycle_margin_top">120dp</dimen>
     <dimen name="bottom_margin_top">40dp</dimen>
+    <dimen name="edittext_height">100dp</dimen>
+    <dimen name="bottom_textview_height">60dp</dimen>
 </resources>

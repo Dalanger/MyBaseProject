@@ -26,7 +26,7 @@ public class Demo6Adapter extends BGARecyclerViewAdapter<Demo6Bean> {
         super(recyclerView, R.layout.demo6_item_list);
         imageLoader = new JImageLoader(mContext);
 
-        //mergeCallBack = new WeixinMerge();//开启微信讨论组模式  请把xml里riv_oval=true去掉
+//        mergeCallBack = new WeixinMerge();//开启微信讨论组模式  请把xml里riv_oval=true去掉
         mergeCallBack = new QqMerge();
         imageLoader.configDefaultPic(R.mipmap.dl_logo);
     }

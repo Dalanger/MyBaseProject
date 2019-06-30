@@ -15,10 +15,10 @@ import com.dl.common.bean.ShareElementBean;
 import com.dl.common.manager.GlideManager;
 import com.dl.common.manager.ShareElementManager;
 import com.dl.mybaseproject.R;
+import com.github.chrisbanes.photoview.PhotoView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import uk.co.senab.photoview.PhotoView;
 
 public class ShareElementActivity extends AppCompatActivity {
 

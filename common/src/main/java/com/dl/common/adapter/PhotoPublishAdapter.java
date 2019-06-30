@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
 import com.dl.common.R;
 import com.dl.common.utils.DisplayUtil;
-import com.dl.common.utils.LogUtil;
 
 import java.io.File;
 
@@ -84,6 +83,7 @@ public class PhotoPublishAdapter extends BGARecyclerViewAdapter<String> {
     }
 
 
+
     @Override
     public String getItem(int position) {
         //必须重写 否则+号布局的position会报空指针
@@ -92,4 +92,5 @@ public class PhotoPublishAdapter extends BGARecyclerViewAdapter<String> {
         }
         return "";
     }
+
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import com.dl.common.recyclerview.OnRecyclerItemClickListener;
 import com.dl.common.recyclerview.WXTouchHelper;
 import com.dl.common.utils.DialogUtil;
 import com.dl.common.utils.DisplayUtil;
+import com.dl.common.utils.LogUtil;
 import com.dl.common.utils.ToastUtil;
 import com.dl.mybaseproject.R;
 import com.jaeger.library.StatusBarUtil;
@@ -29,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bingoogolapple.swipebacklayout.BGAKeyboardUtil;
 
@@ -50,10 +53,17 @@ public class Demo7Activity extends BaseActivity {
     @BindView(R.id.scrollView)
     NestedScrollView scrollView;
 
+
     private int limit = 9;//限制上传多少张图拍呢
     private List<String> imgSelected = new ArrayList<>();
     private PhotoPublishAdapter photoPublishAdapter;
     private ItemTouchHelper itemTouchHelper;
+
+    private int judgeClickMargin;
+    private int bottomItemHeight;
+    private int lineSpace;
+    private int leftMargin;
+    private int starWidth;
 
     @Override
     public int getContentViewId() {
@@ -62,10 +72,24 @@ public class Demo7Activity extends BaseActivity {
 
     @Override
     public void init(Bundle savedInstanceState) {
-        StatusBarUtil.setColorForSwipeBack(mActivity,color(R.color.white),50);
+
+        initView();
         initList();
         fixBottom();
 
+
+    }
+
+    private void initView() {
+        StatusBarUtil.setColorForSwipeBack(mActivity, color(R.color.white), 50);
+        //textview 高度
+        bottomItemHeight = getResources().getDimensionPixelSize(R.dimen.bottom_textview_height);
+        //textview之间分割线 高度
+        lineSpace = (int) getResources().getDimension(R.dimen.dimen_1);
+        //左边距
+        leftMargin = (int)getResources().getDimension(R.dimen.dimen_20);
+        //同步到控件 星星的宽度  图片大小为30dp 左右各留10dp 方便用户
+        starWidth =(int) getResources().getDimension(R.dimen.dimen_50);
     }
 
     private void initList() {
@@ -73,7 +97,7 @@ public class Demo7Activity extends BaseActivity {
         /**
          * 如果没有scrollView包裹 则不用传入scrollView
          */
-        WXTouchHelper myCallBack = new WXTouchHelper(photoPublishAdapter, imgSelected,scrollView);
+        WXTouchHelper myCallBack = new WXTouchHelper(photoPublishAdapter, imgSelected, scrollView);
         itemTouchHelper = new ItemTouchHelper(myCallBack);
         itemTouchHelper.attachToRecyclerView(recyclerPhoto);
         recyclerPhoto.setAdapter(photoPublishAdapter);
@@ -82,15 +106,17 @@ public class Demo7Activity extends BaseActivity {
         recyclerPhoto.addOnItemTouchListener(new OnRecyclerItemClickListener(recyclerPhoto) {
             @Override
             public void onItemClick(RecyclerView.ViewHolder viewHolder) {
+
+
                 if (viewHolder.getAdapterPosition() == imgSelected.size()) {
                     DialogUtil.uploadMultiplePhoto(mActivity, getTakePhoto(), limit);
                 } else {
-                if (imgSelected.size() != 0) {
-                    Intent intent = new Intent(mActivity, BigPhotoActivity.class);
-                    intent.putStringArrayListExtra("imgUrls", (ArrayList<String>) imgSelected);
-                    intent.putExtra("position", viewHolder.getAdapterPosition());
-                    mSwipeBackHelper.forward(intent);
-                }
+                    if (imgSelected.size() != 0) {
+                        Intent intent = new Intent(mActivity, BigPhotoActivity.class);
+                        intent.putStringArrayListExtra("imgUrls", (ArrayList<String>) imgSelected);
+                        intent.putExtra("position", viewHolder.getAdapterPosition());
+                        mSwipeBackHelper.forward(intent);
+                    }
                 }
             }
 
@@ -99,6 +125,32 @@ public class Demo7Activity extends BaseActivity {
                 if (viewHolder.getAdapterPosition() != imgSelected.size()) {
                     BGAKeyboardUtil.closeKeyboard(mActivity);
                     itemTouchHelper.startDrag(viewHolder);
+                }
+            }
+
+            @Override
+            public void onOtherClick(MotionEvent e) {
+                if (e.getY()>judgeClickMargin) {
+                    int between=(int)e.getY()-judgeClickMargin;//判读触摸点与 bottom布局分界处的距离
+
+                    int oneItem=(bottomItemHeight+lineSpace);//一个textview+一个分割线的高度
+                    LogUtil.e(e.getY()+"---"+judgeClickMargin+"==="+oneItem);
+                    if (between>0 && between<=oneItem) {
+                        //点击在第一个textview上 ---所在位置
+                        ToastUtil.normal("所在位置");
+                    } else if (between>oneItem && between<=2*oneItem) {
+
+                        //点击在第二个textview上 ---谁可以看
+                        ToastUtil.normal("谁可以看");
+                    } else if (between>2*oneItem && between<=3*oneItem) {
+
+                        //点击在第三个textview上 ---提醒谁看
+                        ToastUtil.normal("提醒谁看");
+                    } else if (between>3*oneItem && between<=4*oneItem && e.getX()>=leftMargin && e.getX()<=(starWidth+leftMargin)) {
+                        //点击星星 同步到空间
+                        ToastUtil.normal("同步到空间");
+                    }
+
                 }
             }
         });
@@ -174,17 +226,28 @@ public class Demo7Activity extends BaseActivity {
 
         int width = DisplayUtil.getScreenWidth(mActivity);
         int itemWidth = (int) (width - getResources().getDimension(R.dimen.dimen_60)) / 3;//item宽高
-        int itemSpace=(int) getResources().getDimension(R.dimen.dimen_10);//item间隔
+        int itemSpace = (int) getResources().getDimension(R.dimen.dimen_10);//item间隔
         int marginTop = (getResources().getDimensionPixelSize(R.dimen.recycle_margin_top)
                 + itemWidth * row
-                +itemSpace*(row-1)
+                + itemSpace * (row - 1)
                 + getResources().getDimensionPixelSize(R.dimen.bottom_margin_top));
+        //用户判断 在每次fix底部布局高度后判断 注意要减去顶部edittext的高度
+        judgeClickMargin = marginTop-getResources().getDimensionPixelSize(R.dimen.edittext_height);
+
+
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) llBottom.getLayoutParams();
         params.setMargins(0, marginTop, 0, 0);
         llBottom.setLayoutParams(params);
 
+
+
     }
 
 
-
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }

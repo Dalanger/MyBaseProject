@@ -45,9 +45,9 @@
 
 
     <style name="demo6_text_style">
+        <item name="android:gravity">center</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">@dimen/dimen_10</item>
+        <item name="android:layout_height">@dimen/bottom_textview_height</item>
         <item name="android:textColor">@color/black33</item>
         <item name="android:textSize">@dimen/dimen_18</item>
     </style>

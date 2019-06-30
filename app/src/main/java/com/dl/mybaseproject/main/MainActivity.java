@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
 
@@ -32,6 +33,7 @@ public class MainActivity extends BaseActivity {
     TextView titleName;
     @BindView(R.id.root_layout)
     CoordinatorLayout rootLayout;
+
 
     private List<MainDataBean> data;
     private long mBackPressed;
@@ -54,7 +56,6 @@ public class MainActivity extends BaseActivity {
     }
 
 
-
     private void initList() {
         mainAdapter = new MainAdapter(mainList);
         mainList.setAdapter(mainAdapter);
@@ -71,9 +72,6 @@ public class MainActivity extends BaseActivity {
         mainAdapter.setOnRVItemClickListener((parent, itemView, position) -> mSwipeBackHelper.forward(data.get(position).getActivity()));
 
 
-
-
-
     }
 
 
@@ -82,6 +80,7 @@ public class MainActivity extends BaseActivity {
         titleName.setText("Dalanger's  Demos");
 
         data = new ArrayList<>();
+
     }
 
 
@@ -120,4 +119,10 @@ public class MainActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }

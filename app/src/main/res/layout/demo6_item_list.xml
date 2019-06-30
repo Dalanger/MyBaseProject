@@ -15,12 +15,13 @@
 
 
         <com.makeramen.roundedimageview.RoundedImageView
-            app:riv_oval="true"
+
             android:scaleType="centerCrop"
             android:id="@+id/iv_logo"
             android:layout_width="@dimen/dimen_60"
             android:layout_height="@dimen/dimen_60"
             android:layout_marginRight="@dimen/dimen_15"
+            app:riv_oval="true"
             android:src="@mipmap/dl_logo" />
 
         <TextView
@@ -61,7 +62,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_toRightOf="@+id/layout"
-
         android:orientation="horizontal">
 
         <TextView

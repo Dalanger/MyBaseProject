@@ -9,13 +9,10 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
-
-import com.dl.common.utils.LogUtil;
 
 
 /**
@@ -43,6 +40,7 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
     private AppBarLayout mAppBarLayout;
     private onRefrehViewActionListener onRefrehViewActionListener;
     private boolean isScaling;
+
 
 
     public AlipayRefreshBehavior() {
@@ -81,9 +79,9 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
         this.mAppBarLayout = abl;
         abl.setClipChildren(false);
         mParentHeight = abl.getHeight();
-        LogUtil.d("parent"+mParentHeight);
-    }
 
+
+    }
 
 
     @Override
@@ -94,7 +92,7 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
             isAnimate = true;
             return true;
         } else {
-            return super.onStartNestedScroll(parent, child, directTargetChild, target, nestedScrollAxes,type);
+            return super.onStartNestedScroll(parent, child, directTargetChild, target, nestedScrollAxes, type);
         }
 
     }
@@ -114,6 +112,8 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
                 scale(child, dy, target);//执行下拉展开动画
 
             }
+
+
         }
     }
 
@@ -147,7 +147,6 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
     }
 
 
-
     @Override
     public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, AppBarLayout abl, View target, int type) {
 
@@ -163,8 +162,9 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
     }
 
     private void scale(AppBarLayout abl, int dy, View target) {
-        if (dy < 0 &&!canScale(target)) return;
+        if (dy < 0 && !canScale(target)) return;
         isScaling = true;
+
         mFingerMoveDy += -dy;
         mFingerMoveDy = Math.min(mFingerMoveDy, MAX_HEIGHT);//最大高度
         mLastScale = Math.max(1f, 1f + mFingerMoveDy / HARD_RATIO);//放大倍数
@@ -172,7 +172,6 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
         mViewMoveDy = mLastBottom - mParentHeight;
         setTargetHeight(mViewMoveDy);
         abl.setBottom(mLastBottom);
-        Log.i("dalang","执行了吗"+mFingerMoveDy+"==="+mLastScale+"==="+mLastBottom+"==="+mViewMoveDy+"==="+dy);
 
     }
 
@@ -236,7 +235,7 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
                         isRecovering = false;
                         mViewMoveDy = 0;
                         mFingerMoveDy = 0;
-                        isScaling=false;
+                        isScaling = false;
 
                     }
 
@@ -245,7 +244,7 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
                         isRecovering = false;
                         mViewMoveDy = 0;
                         mFingerMoveDy = 0;
-                        isScaling=false;
+                        isScaling = false;
                     }
 
                     @Override
@@ -259,7 +258,7 @@ public class AlipayRefreshBehavior extends AppBarLayout.Behavior {
                 isRecovering = false;
                 mViewMoveDy = 0;
                 mFingerMoveDy = 0;
-                isScaling=false;
+                isScaling = false;
 
             }
         }

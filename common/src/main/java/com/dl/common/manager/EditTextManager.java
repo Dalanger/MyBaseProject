@@ -15,8 +15,6 @@ import java.util.regex.Pattern;
 public class EditTextManager {
 
 
-
-
     /**
      * EditText防止输入空格、换行、颜文字
      * @param editText

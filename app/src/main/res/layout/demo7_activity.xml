@@ -88,10 +88,9 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_1"
-                    android:layout_marginTop="@dimen/dimen_10"
-                    android:layout_marginBottom="@dimen/dimen_10"
                     android:background="@color/grayF5" />
 
+                //将textview固定高度好计算
                 <TextView
                     style="@style/demo6_text_style"
                     android:text="所在位置" />
@@ -99,8 +98,6 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_1"
-                    android:layout_marginTop="@dimen/dimen_10"
-                    android:layout_marginBottom="@dimen/dimen_10"
                     android:background="@color/grayF5" />
 
                 <TextView
@@ -110,8 +107,6 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_1"
-                    android:layout_marginTop="@dimen/dimen_10"
-                    android:layout_marginBottom="@dimen/dimen_10"
                     android:background="@color/grayF5" />
 
                 <TextView
@@ -121,12 +116,11 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_1"
-                    android:layout_marginTop="@dimen/dimen_10"
-                    android:layout_marginBottom="@dimen/dimen_10"
                     android:background="@color/grayF5" />
 
 
                 <ImageView
+                    android:layout_marginTop="@dimen/dimen_10"
                     android:id="@+id/iv_qzone"
                     android:layout_width="@dimen/dimen_30"
                     android:layout_height="@dimen/dimen_30"

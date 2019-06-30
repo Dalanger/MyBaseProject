@@ -66,7 +66,6 @@ public class Demo5Activity extends BaseActivity implements AppBarLayout.OnOffset
         initView();
         initTab();
         initListener();
-
     }
 
 

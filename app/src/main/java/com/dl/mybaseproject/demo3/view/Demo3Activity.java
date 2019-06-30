@@ -46,6 +46,8 @@ public class Demo3Activity extends BaseMvpActivity<IDemo3Contract.View, IDemo3Co
     @Override
     public void init(Bundle savedInstanceState) {
         titleName.setText("RxJava常用操作符");
+
+        //接口已失效，请自行替换接口测试
     }
 
 

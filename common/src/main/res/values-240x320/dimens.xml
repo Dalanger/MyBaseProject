@@ -144,4 +144,23 @@
     <dimen name="dimen_400">300.0px</dimen>
     <dimen name="dimen_450">337.5px</dimen>
     <dimen name="dimen_500">375.0px</dimen>
+
+
+
+    <dimen name="text_size_10">7.5px</dimen>
+    <dimen name="text_size_11">8.25px</dimen>
+    <dimen name="text_size_12">9.0px</dimen>
+    <dimen name="text_size_13">9.75px</dimen>
+    <dimen name="text_size_14">10.5px</dimen>
+    <dimen name="text_size_15">11.25px</dimen>
+    <dimen name="text_size_16">12.0px</dimen>
+    <dimen name="text_size_17">12.75px</dimen>
+    <dimen name="text_size_18">13.5px</dimen>
+    <dimen name="text_size_19">14.25px</dimen>
+    <dimen name="text_size_20">15.0px</dimen>
+    <dimen name="text_size_21">15.75px</dimen>
+    <dimen name="text_size_22">16.5px</dimen>
+    <dimen name="text_size_23">17.25px</dimen>
+    <dimen name="text_size_24">18.0px</dimen>
+    <dimen name="text_size_25">18.75px</dimen>
 </resources>

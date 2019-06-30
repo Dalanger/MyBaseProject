@@ -14,7 +14,6 @@ public class EditTextWithScrollView extends EditText {
 
     //滑动距离的最大边界
     private int mOffsetHeight;
-
     //是否到顶或者到底的标志
     private boolean mBottomFlag = false;
     private boolean mCanVerticalScroll;
